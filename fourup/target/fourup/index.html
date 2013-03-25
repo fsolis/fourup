@@ -47,10 +47,10 @@
 						urls = [getParameterByName("first"), getParameterByName("second"), getParameterByName("third"), getParameterByName("fourth")];
 					
 						if (urls[0] == "" && urls[1] == "" && urls[2] == "" && urls[3] == "") {
-							$("#first").attr('src',"http://fourup.com/info.html");
-							$("#second").attr('src',"http://fourup.com/gen.html");
-							$("#third").attr('src',"http://fourup.com/4up.jpg");
-							$("#fourth").attr('src',"http://fourup.com/about.txt");
+							$("#first").attr('src',"info.html");
+							$("#second").attr('src',"genold.html");
+							$("#third").attr('src',"comments.html");
+							$("#fourth").attr('src',"howto.html");
 						} else {
 					
 							if (isURI(urls[0])) {
@@ -74,10 +74,7 @@
 								$("#fourth").attr('srcdoc', urls[3]);
 							}
 
-							$("#first").contents.find('body').css({zoom:25%;});
-							$("#second").contents.find('body').css({zoom:25%;});
-							$("#thrid").contents.find('body').css({zoom:25%;});
-							$("#fourth").contents.find('body').css({zoom:25%;});
+							
 						}
 					}
 				  fillFrames();
@@ -99,15 +96,15 @@
         <![endif]-->
 				<div class="wrapper">
 					<div class="row">
-						<div class="left"><iframe src="http://fourup.com/?first=http://fourup.com/info.html" class="theframes" id="first" seamless></iframe>
+						<div class="left"><iframe src="info.html" class="theframes" id="first" seamless></iframe>
 						</div>
-						<div class="right"><iframe src="http://fourup.com/?first=http://fourup.com/gen.html" class="theframes" id="second" seamless></iframe>
+						<div class="right"><iframe src="genold.html" class="theframes" id="second" seamless></iframe>
 						</div>
 					</div>
 					<div class="row">
-						<div class="left"><iframe src="http://fourup.com/?first=http://fourup.com/info.html.jpg" class="theframes" id="third" seamless></iframe>
+						<div class="left"><iframe src="info.html" class="theframes" id="third" seamless></iframe>
 						</div>
-						<div class="right"><iframe src="about.txt" class="theframes" id="fourth" seamless></iframe>
+						<div class="right"><iframe src="howto.html" class="theframes" id="fourth" seamless></iframe>
 						</div>
 					</div>
 			</div>
