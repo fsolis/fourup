@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
+<html>
+	<head>
+		<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>fourup.com | making and breaking design decisions</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/fourup.css">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		
+		<link rel="stylesheet" type="text/css" href="css/fourup.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-39027752-1']);
@@ -21,6 +24,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 		<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- MAKES FOURUP LINK -->
 		<script>
 			//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
 			function getParameterByName(name)
@@ -88,26 +92,27 @@
 			{		
 				return  /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(element);
 			}
-		</script>	
+			
+		</script>
 	</head>
 	<body>
-		<div class="wrapper">
-		<div class="row" width="100%" align="right">
-			<form name="userinfo">
-			<label>User email:</label><input type="text" name="email">
-			<label>Password:</label><input type="password" name="password">
-			<input type="submit" name="login" value="Log in">
-			</form>
-			<a href="register.html"><font size="1" color="blue">Register Now</font></a>
+		<div width="100%" align="right">
+				<form name="userinfo">
+					<label>User email: </label><input type="text" name="email">
+					<label>Password: </label><input type="password" name="password">
+					<input type="submit" name="login" value="Log in">
+				</form>
+				<a href="register.html"><font size="1">Register Now</font></a>
 		</div>
-		<div class="row">
-			<div class="left"><iframe src="info.html" class="theframes" id="first" seamless></iframe></div>
-			<div class="right"><iframe src="gen.html" class="theframes" id="second" seamless></iframe></div>
-		</div>
-		<div class="row">
-			<div class="left"><iframe src="info.html" class="theframes" id="third" seamless></iframe></div>
-			<div class="right"><iframe src="howto.html" class="theframes" id="fourth" seamless></iframe></div>
-		</div>
-		</div>
-    </body>
+		<table>
+			<tr class="top">
+				<td class="left"><iframe src="info.html"></iframe></td>
+				<td class="right"><iframe src="gen.html"></iframe></td>
+			</tr>
+			<tr class="bottom">
+				<td class="left"><iframe src="comments.html"></iframe></td>
+				<td class="right"><iframe src="howto.html"></iframe></td>
+			</tr>
+		</table>
+	</body>
 </html>

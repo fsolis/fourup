@@ -1,0 +1,44 @@
+html,body {
+	background: white;
+	height: 100%;
+	width: 100%;
+}
+
+table {
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
+			
+tr,td,th {
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
+		
+.top {
+
+}
+
+.bottom {
+
+}
+		
+.left {
+
+}
+		
+.right {
+
+}
+			
+iframe {
+	width: 100%;
+	height: 100%;
+	seamless;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
