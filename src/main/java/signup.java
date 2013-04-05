@@ -9,6 +9,9 @@ import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 
+import com.mongodb.DB;
+import com.mongodb.MongoURI;
+
 public class signup extends HttpServlet
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
