@@ -10,7 +10,9 @@ import javax.servlet.http.*;
 import com.google.gson.Gson;
 
 import com.mongodb.DB;
-import com.mongodb.MongoURI;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
 
 public class signup extends HttpServlet
 {
@@ -32,7 +34,18 @@ public class signup extends HttpServlet
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
-		// check if data exists in DB, if not then add
+		try {
+			//connect to the database
+			Mongo mongo=new Mongo("localhost" , 27017 );
+			//get accounts database
+			database=mongo.getDB("accounts");
+		}
+		catch (UnknownHostException ex)
+		{
+		}
+		catch (MongoException ex)
+		{
+		}
 		PrintWriter out = response.getWriter();
 		out.write(strResponse);
 		
