@@ -34,20 +34,23 @@ public class signup extends HttpServlet
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
-		try {
+		//try {
 			//connect to the database
-			Mongo mongo=new Mongo("localhost" , 27017 );
+			Mongo mongo=new Mongo("localhost" , 27017);
 			//get accounts database
-			database=mongo.getDB("accounts");
-		}
-		catch (UnknownHostException ex)
-		{
-		}
-		catch (MongoException ex)
-		{
-		}
-		PrintWriter out = response.getWriter();
-		out.write(strResponse);
+			DB database=mongo.getDB("accounts");
+			//BasicDBObject userAccount=new BasicDBObject();
+			//DBCursor found = database.find(userAccount);
+			//if (found != null)
+			//{
+				PrintWriter out = response.getWriter();
+				out.write("Error");
+			//}
+
+		//}
+		//catch (UnknownHostException e) {
+			
+		//}
 		
 	}
 }
