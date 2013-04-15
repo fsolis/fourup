@@ -52,10 +52,11 @@ iframe {
 	position: fixed;
 	margin: 10px;
 	left: 10px;
+	top: -10px;
 }
 
 #menu a {
-	text-decoration: none;
+	color: lightgrey;
 }
 
 #gen {
