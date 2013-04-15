@@ -17,10 +17,10 @@ tr,td,th {
 	padding: 0px;
 	margin: 0px;
 }
-		
+
 .top {
-	height: 16pt;
 	text-align:right;
+	height: 35px;
 }
 
 .middle {
@@ -52,7 +52,7 @@ iframe {
 	position: fixed;
 	margin: 10px;
 	left: 10px;
-	top: -10px;
+	top: -48px;
 }
 
 #menu a {
@@ -61,7 +61,7 @@ iframe {
 
 #gen {
 	background: white;	
-	width: 650px;
+	width: 300px;
 	border: 2px solid black;
 	padding: 5px;
 	display: none;
@@ -75,4 +75,8 @@ iframe {
 	position: relative;
 	top: 25px;
 	left: -20px;
+}
+
+#userinfo {
+	padding-top: 5px;
 }

@@ -63,8 +63,8 @@
 							if (urls[0] == "" && urls[1] == "" && urls[2] == ""
 									&& urls[3] == "") {
 								$("#firstFrame").attr('src', "info.html");
-								$("#secondFrame").attr('src', "gen.html");
-								$("#thirdFrame").attr('src', "register.html");
+								$("#secondFrame").attr('src', "register.html");
+								$("#thirdFrame").attr('src', "comments.html");
 								$("#fourthFrame").attr('src', "howto.html");
 							} else {
 								if (isURI(urls[0])) {
@@ -101,7 +101,7 @@
 </script>
 <script>
 	var create = function() {
-		linka = document.location.hostname + '?first=http://'
+		linka = 'http://' + document.location.hostname + '?first=http://'
 				+ $('#first').val() + '&second=http://' + $('#second').val()
 				+ '&third=http://' + $('#third').val() + '&fourth=http://'
 				+ $('#fourth').val();
@@ -117,38 +117,48 @@
 </script>
 </head>
 <body>
-	<div id="menu" onmouseover="getElementById('gen').style.display='block'" onmouseout="getElementById('gen').style.display='none'">
+	<div id="menu"
+		onmouseover="getElementById('gen').style.display='block'"
+		onmouseout="getElementById('gen').style.display='none'">
 		<div id="arrow">
 			<h3 id="arrowtext">></h3>
 		</div>
 		<div id="gen">
-			<h1>Enter four URLs</h1>
+			<h1 id="titlea">Enter four URLs</h1>
 			<form>
-				<input id="first" size="40" type="text"><br /> 
-				<input id="second" size="40" type="text"><br /> 
-				<input id="third" size="40" type="text"><br /> 
-				<input id="fourth" size="40" type="text"><br /> 
-				<input onclick="create()" value="Make a link" type="button"> 
-				<input id="result" size="90" type="text"><br />
+				<input id="first" size="40" type="text" placeholder="" /><br /> 
+				<input id="second" size="40" type="text" placeholder="" /><br /> 
+				<input id="third" size="40" type="text" placeholder="" /><br /> 
+				<input id="fourth" size="40" type="text" placeholder="" /><br /> 
+				<input onclick="create()" value="Make a link" type="button" /> <br /> 
+				<input id="result" size="40" type="text" /><br />
 			</form>
+			<input onclick="document.getElementById('firstFrame').contentWindow.location.reload(true);" value="Refresh 1" type="button" />
+			<input onclick="document.getElementById('secondFrame').contentWindow.location.reload(true);" value="Refresh 2" type="button" />
+			<input onclick="document.getElementById('thirdFrame').contentWindow.location.reload(true);" value="Refresh 3" type="button" />
+			<input onclick="document.getElementById('fourthFrame').contentWindow.location.reload(true);" value="Refresh 4" type="button" />
+			<br />
+			<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
+			<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" />
+			<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
+			<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
+			<input onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'register.html'); $('#thirdFrame').attr('src', 'comments.html'); $('#fourthFrame').attr('src', 'howto.html');" value="Reset" type="button" />
 		</div>
 	</div>
+	<div class="top">
+		<form name="userinfo" action="login" method="post" id="userinfo">
+			<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
+				type="password" name="password"> <input type="submit"
+				name="login" value="Log in">
+		</form>
+	</div>
 	<table>
-		<tr class="top">
-			<td colspan="2">
-				<form name="userinfo" action="login" method="post">
-					<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
-						type="password" name="password"> <input type="submit"
-						name="login" value="Log in">
-				</form>
-			</td>
-		</tr>
 		<tr class="middle">
 			<td class="left"><iframe src="info.html" id="firstFrame"></iframe></td>
-			<td class="right"><iframe src="info.html" id="secondFrame"></iframe></td>
+			<td class="right"><iframe src="register.html" id="secondFrame"></iframe></td>
 		</tr>
 		<tr class="bottom">
-			<td class="left"><iframe src="register.html" id="thirdFrame"></iframe></td>
+			<td class="left"><iframe src="comments.html" id="thirdFrame"></iframe></td>
 			<td class="right"><iframe src="howto.html" id="fourthFrame"></iframe></td>
 		</tr>
 	</table>
