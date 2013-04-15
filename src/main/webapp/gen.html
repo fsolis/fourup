@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>fourup.com</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<script src="gen_files/ga.js" async="" type="text/javascript"></script><script src="gen_files/jquery.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<script src="gen_files/modernizr-2.js"></script>
+		<script type="text/javascript" src="js/shortUrl.js"></script>
+		<script>
+			var create = function()
+			{
+				linka = 'http://shielded-plains-8328.herokuapp.com/?first=http://'+ $('#first').val() +'&second=http://' + $('#second').val() + '&third=http://' + $('#third').val() + '&fourth=http://' + $('#fourth').val();
+				$('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+				$('#result').val(linka);
+				get_short_url(linka, login, api_key, function(short_url){
+				console.log(short_url);
+				});
+			}
+			//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
+		</script>
+		<style type="text/css">
+		img {
+			float: left; 
+			width: 200px;
+		}
+					
+		html, body {
+			font-family: "Century Gothic", "Helvetica", sans-serif;
+			color: black;
+			text-align: left;
+			background: white;
+		}			
+		a {
+			color: gray;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="row">
+				<h1 id="titlea">Enter four URLs</h3>
+				<input id="first" size="40" type="text"><br>
+				<input id="second" size="40" type="text"><br>
+				<input id="third" size="40" type="text"><br>
+				<input id="fourth" size="40" type="text"><br>
+				<input onclick="create()" value="Make a link" type="button">
+				<input id="result" size="90" type="text"><br>
+			</div>
+		</div>
+		<script src="gen_files/main.js"></script>
+	</body>
+</html>
