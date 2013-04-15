@@ -62,30 +62,30 @@
 									getParameterByName("fourth") ];
 							if (urls[0] == "" && urls[1] == "" && urls[2] == ""
 									&& urls[3] == "") {
-								$("#first").attr('src', "info.html");
-								$("#second").attr('src', "gen.html");
-								$("#third").attr('src', "register.html");
-								$("#fourth").attr('src', "howto.html");
+								$("#firstFrame").attr('src', "info.html");
+								$("#secondFrame").attr('src', "gen.html");
+								$("#thirdFrame").attr('src', "register.html");
+								$("#fourthFrame").attr('src', "howto.html");
 							} else {
 								if (isURI(urls[0])) {
-									$("#first").attr('src', urls[0]);
+									$("#firstFrame").attr('src', urls[0]);
 								} else {
-									$("#first").attr('srcdoc', urls[0]);
+									$("#firstFrame").attr('srcdoc', urls[0]);
 								}
 								if (isURI(urls[1])) {
-									$("#second").attr('src', urls[1]);
+									$("#secondFrame").attr('src', urls[1]);
 								} else {
-									$("#second").attr('srcdoc', urls[1]);
+									$("#secondFrame").attr('srcdoc', urls[1]);
 								}
 								if (isURI(urls[2])) {
-									$("#third").attr('src', urls[2]);
+									$("#thirdFrame").attr('src', urls[2]);
 								} else {
-									$("#third").attr('srcdoc', urls[2]);
+									$("#thirdFrame").attr('srcdoc', urls[2]);
 								}
 								if (isURI(urls[3])) {
-									$("#fourth").attr('src', urls[3]);
+									$("#fourthFrame").attr('src', urls[3]);
 								} else {
-									$("#fourth").attr('srcdoc', urls[3]);
+									$("#fourthFrame").attr('srcdoc', urls[3]);
 								}
 							}
 
@@ -101,7 +101,7 @@
 </script>
 <script>
 	var create = function() {
-		linka = document.URL + '?first=http://'
+		linka = document.location.hostname + '?first=http://'
 				+ $('#first').val() + '&second=http://' + $('#second').val()
 				+ '&third=http://' + $('#third').val() + '&fourth=http://'
 				+ $('#fourth').val();
@@ -117,25 +117,22 @@
 </script>
 </head>
 <body>
-	<div id="menu"
-		onmouseover="getElementById('gen').style.display='block'"
-		onmouseout="getElementById('gen').style.display='none'">
+	<div id="menu" onmouseover="getElementById('gen').style.display='block'" onmouseout="getElementById('gen').style.display='none'">
 		<div id="arrow">
 			<h3 id="arrowtext">></h3>
 		</div>
 		<div id="gen">
-			<h1 id="titlea">Enter four URLs</h1>
-			<input id="first" size="40" type="text"><br> <input
-				id="second" size="40" type="text"><br> <input
-				id="third" size="40" type="text"><br> <input
-				id="fourth" size="40" type="text"><br> <input
-				onclick="create()" value="Make a link" type="button"> <input
-				id="result" size="90" type="text"><br>
+			<h1>Enter four URLs</h1>
+			<form>
+				<input id="first" size="40" type="text"><br /> 
+				<input id="second" size="40" type="text"><br /> 
+				<input id="third" size="40" type="text"><br /> 
+				<input id="fourth" size="40" type="text"><br /> 
+				<input onclick="create()" value="Make a link" type="button"> 
+				<input id="result" size="90" type="text"><br />
+			</form>
 		</div>
 	</div>
-	
-	<script src="gen_files/main.js"></script>
-	
 	<table>
 		<tr class="top">
 			<td colspan="2">
@@ -147,14 +144,16 @@
 			</td>
 		</tr>
 		<tr class="middle">
-			<td class="left"><iframe src="info.html" id="first"></iframe></td>
-			<td class="right"><iframe src="gen.html" id="second"></iframe></td>
+			<td class="left"><iframe src="info.html" id="firstFrame"></iframe></td>
+			<td class="right"><iframe src="info.html" id="secondFrame"></iframe></td>
 		</tr>
 		<tr class="bottom">
-			<td class="left"><iframe src="register.html" id="third"></iframe></td>
-			<td class="right"><iframe src="howto.html" id="fourth"></iframe></td>
+			<td class="left"><iframe src="register.html" id="thirdFrame"></iframe></td>
+			<td class="right"><iframe src="howto.html" id="fourthFrame"></iframe></td>
 		</tr>
 	</table>
+
+	<script src="gen_files/main.js"></script>
 
 </body>
 </html>
