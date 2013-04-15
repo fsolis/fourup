@@ -14,7 +14,7 @@
 		<script>
 			var create = function()
 			{
-				linka = 'http://shielded-plains-8328.herokuapp.com/?first=http://'+ $('#first').val() +'&second=http://' + $('#second').val() + '&third=http://' + $('#third').val() + '&fourth=http://' + $('#fourth').val();
+				linka = document.url + '?first=http://'+ $('#first').val() +'&second=http://' + $('#second').val() + '&third=http://' + $('#third').val() + '&fourth=http://' + $('#fourth').val();
 				$('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
 				$('#result').val(linka);
 				get_short_url(linka, login, api_key, function(short_url){

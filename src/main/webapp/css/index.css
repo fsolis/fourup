@@ -46,5 +46,32 @@ iframe {
 	border: none;
 	padding: 0px;
 	margin: 0px;
-	scrolling: auto;
+}
+
+#menu {
+	position: fixed;
+	margin: 10px;
+	left: 10px;
+}
+
+#menu a {
+	text-decoration: none;
+}
+
+#gen {
+	background: white;	
+	width: 650px;
+	border: 2px solid black;
+	padding: 5px;
+	display: none;
+}
+
+#arrow {
+	background: black;
+	color: white;
+	width: 20px;
+	height: 25px;
+	position: relative;
+	top: 25px;
+	left: -20px;
 }
