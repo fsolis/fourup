@@ -32,32 +32,32 @@ public class signup extends HttpServlet
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status ", "Success");
+		myResponse.put("Status", "Success");
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
+		PrintWriter out = response.getWriter();
 		try
 		{
 				Mongo mongo = new Mongo("localhost", 27017);
 				DB db = mongo.getDB("fourup");
-				DBCollection userAccounts = db.getCollection("accounts");
+				DBCollection accounts = db.getCollection("accounts");				
 				BasicDBObject query = new BasicDBObject();
 				query.put("email", email);
-				DBCursor cursor = userAccounts.find(query);
-				if (cursor.hasNext()) //check if email has already been registered
+				DBCursor cursor = accounts.find(query);
+				if (cursor.size() > 0) //check if email has already been registered
 				{
-					PrintWriter out = response.getWriter();
-					out.write(myResponse.get(2)); //should output error
+					out.write(myResponse.get("Error")); //should output error
 				} 
 				else //since email doesn't currently exist in DB, go ahead and register user
 				{
 					BasicDBObject document = new BasicDBObject();
 					document.put("email", email);
-					document.put("password", password); //this is where we need to hash the password
-					PrintWriter out = response.getWriter();
-					out.write(myResponse.get(0)); 
-					
-				} 
+					document.put("password", password);//this is where we need to hash the password
+					accounts.insert(document);
+					out.write(myResponse.get("Status"));
+				}
+
 		} 
 		catch (MongoException e)
 		{
