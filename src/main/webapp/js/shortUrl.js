@@ -18,3 +18,15 @@ function get_short_url(long_url, login, api_key, func)
         }
     );
 }
+
+var create = function()
+{
+    linka = document.url + '?first=http://'+ $('#first').val() +'&second=http://' + $('#second').val() + '&third=http://' + $('#third').val() + '&fourth=http://' + $('#fourth').val();
+    $('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+    
+    get_short_url(linka, login, api_key, function(short_url){
+        console.log(short_url);
+        $('#result').val(short_url);
+    });
+}
+//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
