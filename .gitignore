@@ -2,3 +2,4 @@ target/*
 fourup/target/*
 /target
 ./target
+.DS_Store
