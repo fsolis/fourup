@@ -17,12 +17,21 @@ tr,td,th {
 	padding: 0px;
 	margin: 0px;
 }
+#bottom
+{
+	height:95%;
+}
 
 .top {
 	text-align:right;
-	height: 35px;
+	height: 5%;
 }
-
+.frameDiv
+{
+	float:left;
+	height:50%;
+	width: 50%;
+}
 .middle {
 
 }
@@ -38,6 +47,7 @@ tr,td,th {
 .right {
 
 }
+
 			
 iframe {
 	width: 100%;

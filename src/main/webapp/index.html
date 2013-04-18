@@ -1,169 +1,70 @@
 <html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>fourup.com | making and breaking design decisions</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" href="css/fourup.css">
-<link rel="stylesheet" type="text/css" href="css/index.css">
-<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="gen_files/ga.js" async="" type="text/javascript"></script>
-<script src="gen_files/jquery.js"></script>
-<script src="gen_files/modernizr-2.js"></script>
-<script type="text/javascript" src="js/shortUrl.js"></script>
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push([ '_setAccount', 'UA-39027752-1' ]);
-	_gaq.push([ '_trackPageview' ]);
-	(function() {
-		var ga = document.createElement('script');
-		ga.type = 'text/javascript';
-		ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
-				: 'http://www')
-				+ '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(ga, s);
-	})();
-</script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-	window.jQuery
-			|| document
-					.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
-</script>
-<script>
-	//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
-	function getParameterByName(name) {
-		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-		var regexS = "[\\?&]" + name + "=([^&#]*)";
-		var regex = new RegExp(regexS);
-		var results = regex.exec(window.location.search);
-		if (results == null)
-			return "";
-		else
-			return decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-	$(document)
-			.ready(
-					function() {
-
-						var isURI = function(element) {
-							return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i
-									.test(element);
-						}
-
-						var fillFrames = function() {
-							urls = [ getParameterByName("first"),
-									getParameterByName("second"),
-									getParameterByName("third"),
-									getParameterByName("fourth") ];
-							if (urls[0] == "" && urls[1] == "" && urls[2] == ""
-									&& urls[3] == "") {
-								$("#firstFrame").attr('src', "info.html");
-								$("#secondFrame").attr('src', "register.html");
-								$("#thirdFrame").attr('src', "comments.html");
-								$("#fourthFrame").attr('src', "howto.html");
-							} else {
-								if (isURI(urls[0])) {
-									$("#firstFrame").attr('src', urls[0]);
-								} else {
-									$("#firstFrame").attr('srcdoc', urls[0]);
-								}
-								if (isURI(urls[1])) {
-									$("#secondFrame").attr('src', urls[1]);
-								} else {
-									$("#secondFrame").attr('srcdoc', urls[1]);
-								}
-								if (isURI(urls[2])) {
-									$("#thirdFrame").attr('src', urls[2]);
-								} else {
-									$("#thirdFrame").attr('srcdoc', urls[2]);
-								}
-								if (isURI(urls[3])) {
-									$("#fourthFrame").attr('src', urls[3]);
-								} else {
-									$("#fourthFrame").attr('srcdoc', urls[3]);
-								}
-							}
-
-						};
-						fillFrames();
-
-					});
-</script>
-<script>
-	window.jQuery
-			|| document
-					.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
-</script>
-<script>
-	var create = function() {
-		linka = 'http://' + document.location.hostname + '?first=http://'
-				+ $('#first').val() + '&second=http://' + $('#second').val()
-				+ '&third=http://' + $('#third').val() + '&fourth=http://'
-				+ $('#fourth').val();
-		$('#titlea')
-				.html(
-						'<a href="' + linka + '" target="_new">Here is your fourup.</a>');
-		$('#result').val(linka);
-		get_short_url(linka, login, api_key, function(short_url) {
-			console.log(short_url);
-		});
-	}
-	//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
-</script>
-</head>
-<body>
-	<div id="menu"
-		onmouseover="getElementById('gen').style.display='block'"
-		onmouseout="getElementById('gen').style.display='none'">
-		<div id="arrow">
-			<h3 id="arrowtext">></h3>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>fourup.com | making and breaking design decisions</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/fourup.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<script type="text/javascript" src="gen_files/ga.js" async="" type="text/javascript"></script>
+		<script type="text/javascript" src="gen_files/jquery.js"></script>
+		<script type="text/javascript" src="gen_files/modernizr-2.js"></script>
+		<script type="text/javascript" src="js/shortUrl.js"></script>
+		<script type="text/javascript" src="js/fourup.js"></script>
+		<script type="text/javascript" src="gen_files/main.js"></script>
+	</head>
+	<body>
+		<div id="menu"
+			onmouseover="getElementById('gen').style.display='block'"
+			onmouseout="getElementById('gen').style.display='none'">
+			<div id="arrow">
+				<h3 id="arrowtext">></h3>
+			</div>
+			<div id="gen">
+				<h1 id="titlea">Enter four URLs</h1>
+				<form>
+					<input id="first" size="40" type="text" placeholder="" /><br /> 
+					<input id="second" size="40" type="text" placeholder="" /><br /> 
+					<input id="third" size="40" type="text" placeholder="" /><br /> 
+					<input id="fourth" size="40" type="text" placeholder="" /><br /> 
+					<input onclick="create()" value="Make a link" type="button" /> <br /> 
+					<input id="result" size="40" type="text" /><br />
+				</form>
+				<input onclick="document.getElementById('firstFrame').contentWindow.location.reload(true);" value="Refresh 1" type="button" />
+				<input onclick="document.getElementById('secondFrame').contentWindow.location.reload(true);" value="Refresh 2" type="button" />
+				<input onclick="document.getElementById('thirdFrame').contentWindow.location.reload(true);" value="Refresh 3" type="button" />
+				<input onclick="document.getElementById('fourthFrame').contentWindow.location.reload(true);" value="Refresh 4" type="button" />
+				<br />
+				<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
+				<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" />
+				<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
+				<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
+				<input onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'register.html'); $('#thirdFrame').attr('src', 'comments.html'); $('#fourthFrame').attr('src', 'howto.html');" value="Reset" type="button" />
+			</div>
 		</div>
-		<div id="gen">
-			<h1 id="titlea">Enter four URLs</h1>
-			<form>
-				<input id="first" size="40" type="text" placeholder="" /><br /> 
-				<input id="second" size="40" type="text" placeholder="" /><br /> 
-				<input id="third" size="40" type="text" placeholder="" /><br /> 
-				<input id="fourth" size="40" type="text" placeholder="" /><br /> 
-				<input onclick="create()" value="Make a link" type="button" /> <br /> 
-				<input id="result" size="40" type="text" /><br />
+		<div class="top">
+			<form name="userinfo" action="login" method="post" id="userinfo">
+				<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
+					type="password" name="password"> <input type="submit"
+					name="login" value="Log in">
 			</form>
-			<input onclick="document.getElementById('firstFrame').contentWindow.location.reload(true);" value="Refresh 1" type="button" />
-			<input onclick="document.getElementById('secondFrame').contentWindow.location.reload(true);" value="Refresh 2" type="button" />
-			<input onclick="document.getElementById('thirdFrame').contentWindow.location.reload(true);" value="Refresh 3" type="button" />
-			<input onclick="document.getElementById('fourthFrame').contentWindow.location.reload(true);" value="Refresh 4" type="button" />
-			<br />
-			<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
-			<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" />
-			<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
-			<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
-			<input onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'register.html'); $('#thirdFrame').attr('src', 'comments.html'); $('#fourthFrame').attr('src', 'howto.html');" value="Reset" type="button" />
 		</div>
-	</div>
-	<div class="top">
-		<form name="userinfo" action="login" method="post" id="userinfo">
-			<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
-				type="password" name="password"> <input type="submit"
-				name="login" value="Log in">
-		</form>
-	</div>
-	<table>
-		<tr class="middle">
-			<td class="left"><iframe src="info.html" id="firstFrame"></iframe></td>
-			<td class="right"><iframe src="register.html" id="secondFrame"></iframe></td>
-		</tr>
-		<tr class="bottom">
-			<td class="left"><iframe src="comments.html" id="thirdFrame"></iframe></td>
-			<td class="right"><iframe src="howto.html" id="fourthFrame"></iframe></td>
-		</tr>
-	</table>
-
-	<script src="gen_files/main.js"></script>
-
-</body>
+		<div id="bottom" class="bottomContent">
+			<div class="frameDiv">
+				<iframe src="info.html" id="firstFrame"></iframe>
+			</div>
+			<div class="frameDiv"> 
+				<iframe src="register.html" id="secondFrame"></iframe>
+			</div>
+			<div class="frameDiv">
+				<iframe src="comments.html" id="thirdFrame"></iframe>
+			</div>
+			<div class="frameDiv">
+				<iframe src="howto.html" id="fourthFrame"></iframe>
+			</div>
+		</div>
+	</body>
 </html>
