@@ -9,14 +9,10 @@ import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.Mongo;
-import com.mongodb.MongoException;
+import com.mongodb.MongoURI;
 
-public class signup extends HttpServlet
+public class login extends HttpServlet
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
@@ -32,38 +28,13 @@ public class signup extends HttpServlet
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status", "Success");
+		myResponse.put("Status ", "Success");
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
+		// check if data exists in DB, if not then add
 		PrintWriter out = response.getWriter();
-		try
-		{
-				Mongo mongo = new Mongo("localhost", 27017);
-				DB db = mongo.getDB("fourup");
-				DBCollection accounts = db.getCollection("accounts");				
-				BasicDBObject query = new BasicDBObject();
-				query.put("email", email);
-				DBCursor cursor = accounts.find(query);
-				if (cursor.size() > 0) //check if email has already been registered
-				{
-					out.write(myResponse.get("Error")); //should output error
-				} 
-				else //since email doesn't currently exist in DB, go ahead and register user
-				{
-					BasicDBObject document = new BasicDBObject();
-					document.put("email", email);
-					document.put("password", password);//this is where we need to hash the password
-					accounts.insert(document);
-					out.write(myResponse.get("Status"));
-				}
-
-		} 
-		catch (MongoException e)
-		{
-				e.printStackTrace();
-		}
-
+		out.write(strResponse);
 		
 	}
 }

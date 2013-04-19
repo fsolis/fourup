@@ -1,2 +1,16 @@
 target/*
 fourup/target/*
+/target
+./target
+.DS_Store
+target/classes/edu/cst438/fourup/signup.class
+
+target/classes/edu/cst438/fourup/signup.class
+
+target/fourup/WEB-INF/classes/edu/cst438/fourup/signup.class
+
+target/fourup/WEB-INF/classes/edu/cst438/fourup/signup.class
+
+.DS_Store
+
+.DS_Store
