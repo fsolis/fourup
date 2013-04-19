@@ -33,10 +33,10 @@
 					<input onclick="create()" value="Make a link" type="button" /> <br /> 
 					<input id="result" size="40" type="text" /><br />
 				</form>
-				<input onclick="document.getElementById('firstFrame').contentWindow.location.reload(true);" value="Refresh 1" type="button" />
-				<input onclick="document.getElementById('secondFrame').contentWindow.location.reload(true);" value="Refresh 2" type="button" />
-				<input onclick="document.getElementById('thirdFrame').contentWindow.location.reload(true);" value="Refresh 3" type="button" />
-				<input onclick="document.getElementById('fourthFrame').contentWindow.location.reload(true);" value="Refresh 4" type="button" />
+				<input onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src" value="Refresh 1" type="button" />
+				<input onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src" value="Refresh 2" type="button" />
+				<input onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src" value="Refresh 3" type="button" />
+				<input onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src" value="Refresh 4" type="button" />
 				<br />
 				<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
 				<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" />
@@ -57,10 +57,10 @@
 				<iframe src="info.html" id="firstFrame"></iframe>
 			</div>
 			<div class="frameDiv"> 
-				<iframe src="register.html" id="secondFrame"></iframe>
+				<iframe src="gen.html" id="secondFrame"></iframe>
 			</div>
 			<div class="frameDiv">
-				<iframe src="comments.html" id="thirdFrame"></iframe>
+				<iframe src="example.html" id="thirdFrame"></iframe>
 			</div>
 			<div class="frameDiv">
 				<iframe src="howto.html" id="fourthFrame"></iframe>

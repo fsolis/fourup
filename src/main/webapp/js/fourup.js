@@ -39,8 +39,8 @@ function getParameterByName(name) {
 							if (urls[0] == "" && urls[1] == "" && urls[2] == ""
 									&& urls[3] == "") {
 								$("#firstFrame").attr('src', "info.html");
-								$("#secondFrame").attr('src', "register.html");
-								$("#thirdFrame").attr('src', "comments.html");
+								$("#secondFrame").attr('src', "gen.html");
+								$("#thirdFrame").attr('src', "example.html");
 								$("#fourthFrame").attr('src', "howto.html");
 							} else {
 								if (isURI(urls[0])) {
