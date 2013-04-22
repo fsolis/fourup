@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="js/shortUrl.js"></script>
 		<script type="text/javascript" src="js/fourup.js"></script>
 		<script type="text/javascript" src="gen_files/main.js"></script>
+		<script type="text/javascript" src="js/fullscreen.js"></script>
 		<!--<script>
 		var create = function() {
 			linka = 'http://' + document.location.hostname + '?first=http://'
@@ -57,6 +58,11 @@
 				<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
 				<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
 				<input onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'register.html'); $('#thirdFrame').attr('src', 'comments.html'); $('#fourthFrame').attr('src', 'howto.html');" value="Reset" type="button" />
+				<br />
+				<input id ="firstFB" type="button" value="full 1">
+				<input id ="secondFB" type="button" value="full 2">
+				<input id ="thirdFB" type="button" value="full 3">
+				<input id ="fourthFB" type="button" value="full 4">
 			</div>
 		</div>
 		<div class="top">
@@ -67,16 +73,16 @@
 			</form>
 		</div>
 		<div id="bottom" class="bottomContent">
-			<div class="frameDiv">
+			<div id="firstF" class="frameDiv">
 				<iframe src="info.html" id="firstFrame"></iframe>
 			</div>
-			<div class="frameDiv"> 
+			<div id="secondF" class="frameDiv"> 
 				<iframe src="gen.html" id="secondFrame"></iframe>
 			</div>
-			<div class="frameDiv">
+			<div id="thirdF" class="frameDiv">
 				<iframe src="example.html" id="thirdFrame"></iframe>
 			</div>
-			<div class="frameDiv">
+			<div id="fourthF" class="frameDiv">
 				<iframe src="howto.html" id="fourthFrame"></iframe>
 			</div>
 		</div>
