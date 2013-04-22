@@ -13,7 +13,7 @@ function get_short_url(long_url, login, api_key, func) {
 }
 
 function create() {
-	linka = 'http://shielded-dusk-6725.herokuapp.com' + '?first=http://' + $('#first').val()
+	linka = 'http://shielded-plains-8328.herokuapp.com' + '?first=http://' + $('#first').val()
 			+ '&second=http://' + $('#second').val() + '&third=http://'
 			+ $('#third').val() + '&fourth=http://' + $('#fourth').val();
 	$('#titlea').html(
