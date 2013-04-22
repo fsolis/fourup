@@ -20,9 +20,9 @@ $(document).ready(function(){
 		if($(this).val() == 'full 2'){
 			resetcss();
 			$('.frameDiv').css('display', 'none');
-			$('secondF').css('display', 'block');
-			$('secondF').css('height', '100%');
-			$('secondF').css('width','100%');
+			$('#secondF').css('display', 'block');
+			$('#secondF').css('height', '100%');
+			$('#secondF').css('width','100%');
 			$(this).val('fourup');
 		}else{
 			resetcss();
@@ -34,9 +34,10 @@ $(document).ready(function(){
 		if($(this).val() == 'full 3'){
 			resetcss();
 			$('.frameDiv').css('display', 'none');
-			$('thridF').css('height', '100%');
-			$('thridF').css('display', 'block');
-			$('thridF').css('width','100%');
+			$('#thridF').css('display', 'block');
+			$('#thridF').css('height', '100%');
+			$('#thridF').css('width','100%');
+			$(this).val('fourup');
 		}else{
 			resetcss();
 			$(this).val('full 3');
@@ -44,12 +45,13 @@ $(document).ready(function(){
 	});
 
 	$('#fourthFB').click(function(){
-		if($(this).val() == 'full 3'){
+		if($(this).val() == 'full 4'){
 			resetcss();
 			$('.frameDiv').css('display', 'none');
-			$('fourthF').css('display', 'block');
-			$('fourthF').css('height', '100%');
-			$('fourthF').css('width','100%');
+			$('#fourthF').css('display', 'block');
+			$('#fourthF').css('height', '100%');
+			$('#fourthF').css('width','100%');
+			$(this).val('fourup');
 		}else{
 			resetcss();
 			$(this).val('full 4');
@@ -57,18 +59,22 @@ $(document).ready(function(){
 	});
 
 	function resetcss(){
+		$('#firstFB').val('full 1')
+		$('#secondFB').val('full 2')
+		$('#thirdFB').val('full 3')
+		$('#fourthFB').val('full 4')
 		$('.frameDiv').css('display', 'block');
 		$('#firstF').css('display', '');
 		$('#firstF').css('height', '');
 		$('#firstF').css('width','');
-		$('secondF').css('display', '');
-		$('secondF').css('height', '');
-		$('secondF').css('width','');
-		$('thridF').css('height', '');
-		$('thridF').css('display', '');
-		$('thridF').css('width','');
-		$('fourthF').css('height', '');
-		$('fourthF').css('display', '');
-		$('fourthF').css('width','');
+		$('#secondF').css('display', '');
+		$('#secondF').css('height', '');
+		$('#secondF').css('width','');
+		$('#thridF').css('display', '');
+		$('#thridF').css('height', '');
+		$('#thridF').css('width','');
+		$('#fourthF').css('display', '');
+		$('#fourthF').css('height', '');
+		$('#fourthF').css('width','');
 	}
 });
