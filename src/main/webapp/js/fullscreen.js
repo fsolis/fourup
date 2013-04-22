@@ -34,9 +34,9 @@ $(document).ready(function(){
 		if($(this).val() == 'full 3'){
 			resetcss();
 			$('.frameDiv').css('display', 'none');
-			$('#thridF').css('display', 'block');
-			$('#thridF').css('height', '100%');
-			$('#thridF').css('width','100%');
+			$('#thirdF').css('display', 'block');
+			$('#thirdF').css('height', '100%');
+			$('#thirdF').css('width','100%');
 			$(this).val('fourup');
 		}else{
 			resetcss();
@@ -70,9 +70,9 @@ $(document).ready(function(){
 		$('#secondF').css('display', '');
 		$('#secondF').css('height', '');
 		$('#secondF').css('width','');
-		$('#thridF').css('display', '');
-		$('#thridF').css('height', '');
-		$('#thridF').css('width','');
+		$('#thirdF').css('display','');
+		$('#thirdF').css('height','');
+		$('#thirdF').css('width','');
 		$('#fourthF').css('display', '');
 		$('#fourthF').css('height', '');
 		$('#fourthF').css('width','');
