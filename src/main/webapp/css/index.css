@@ -137,8 +137,18 @@ iframe {
 }
 
 #newMenu td {
-	width: 75px;
-	height: 75px;
+	width: 70px;
+	height: 70px;
+}
+
+#newMenu img {
+	width: 25px;
+	height: 25px;
+	padding-top: 5px;
+}
+
+#newMenu a {
+	font-size: 9pt;
 }
 
 #firstMenu {
@@ -153,10 +163,18 @@ iframe {
 	background: white;
 }
 
+#secondMenu a {
+	color: grey;
+}
+
 #thirdMenu {
 	-moz-border-bottom-left-radius: 30px;
 	border-bottom-left-radius: 30px;
 	background: white;
+}
+
+#thirdMenu a {
+	color: grey;
 }
 
 #fourthMenu {

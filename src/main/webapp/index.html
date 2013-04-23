@@ -73,26 +73,26 @@
 			onmouseout="getElementById('newMenu').style.display='none'">
 			<tr>
 				<td id="firstMenu">
-					<input onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src" value="Refresh 1" type="button" /> 
-					<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
-					<input id="firstFB" type="button" value="full 1" />  
+					<a href="#" onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"><img src="images/refresh_lightgrey.png" /></a> 
+					<a href="#" onclick="$('#firstFrame').attr('src', 'blank.html');"><img src="images/close_lightgrey.png" /></a> <br />
+					<a id="firstFB" href="#" >fullscreen</a>  
 				</td>
 				<td id="secondMenu">
-					<input onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src" value="Refresh 2" type="button" /> 
-					<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" /> 
-					<input id="secondFB" type="button" value="full 2" /> 
+					<a href="#" onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src"><img src="images/refresh_darkgrey.png" /></a>
+					<a href="#" onclick="$('#secondFrame').attr('src', 'blank.html');"><img src="images/close_darkgrey.png" /></a> <br />
+					<a id="secondFB" href="#" >fullscreen</a>  
 				</td>
 			</tr>
 			<tr>
 				<td id="thirdMenu">
-					<input onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src" value="Refresh 3" type="button" /> 
-					<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
-					<input id="thirdFB" type="button" value="full 3" /> 
+					<a id="thirdFB" href="#" >fullscreen</a>  <br />
+					<a href="#" onclick="$('#thirdFrame').attr('src', 'blank.html');"><img src="images/close_darkgrey.png" /></a>
+					<a href="#" onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src"><img src="images/refresh_darkgrey.png" /></a>
 				</td>
 				<td id="fourthMenu">
-					<input onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src" value="Refresh 4" type="button" /> <br /> 
-					<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
-					<input id="fourthFB" type="button" value="full 4" /> 	
+					<a id="fourthFB" href="#" >fullscreen</a>  <br />
+					<a href="#" onclick="$('#fourthFrame').attr('src', 'blank.html');"><img src="images/close_lightgrey.png" class="lightclose" /></a>
+					<a href="#" onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src"><img src="images/refresh_lightgrey.png" /></a>	
 				</td>
 			</tr>
 		</table>
