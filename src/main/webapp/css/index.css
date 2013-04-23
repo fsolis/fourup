@@ -79,11 +79,12 @@ iframe {
 #arrow {
 	background: black;
 	color: white;
-	width: 20px;
+	width: 200px;
 	height: 25px;
 	position: relative;
 	top: 25px;
 	left: -20px;
+	display: block;
 }
 
 #userinfo {
@@ -162,4 +163,35 @@ iframe {
 	-moz-border-bottom-right-radius: 30px;
 	border-bottom-right-radius: 30px;
 	background: black;
+}
+
+#backToFourup {
+	position: fixed;
+	margin-top: 6px;
+	left: 210px;
+	background: black;
+	height: 25px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-weight: bold;
+}
+
+#closeFS {
+	position: fixed;
+	top: 34px;
+	background: black;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+	width: 20px;
+	text-align: center;
+	display: none;
+}
+
+#closeFS:hover {
+	opacity: 1.0;
+	filter: alpha(opacity = 100);
+}
+
+#closeFS a {
+	text-decoration: none;
 }

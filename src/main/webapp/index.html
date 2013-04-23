@@ -39,7 +39,7 @@
 		onmouseover="getElementById('gen').style.display='block'"
 		onmouseout="getElementById('gen').style.display='none'">
 		<div id="arrow">
-			<h3 id="arrowtext">></h3>
+			<h3 id="arrowtext">Make a New FourUp</h3>
 		</div>
 		<div id="gen">
 			<h1 id="titlea">Enter four URLs</h1>
@@ -50,11 +50,14 @@
 					id="fourth" size="40" type="text" placeholder="" /><br /> <input
 					onclick="create('http://' + document.location.hostname)"
 					value="Make a link" type="button" /> <br /> <input id="result"
-					size="40" type="text" /><br />
-			</form>
-			<input onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'register.html'); $('#thirdFrame').attr('src', 'comments.html'); $('#fourthFrame').attr('src', 'howto.html');" value="Reset" type="button" /> <br /> 
+					size="40" type="text" />
+			</form> 
 		</div>
 	</div>
+	<div id="navigation">
+		<a href="#" id="backToFourUp" onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'gen.html'); $('#thirdFrame').attr('src', 'example.html'); $('#fourthFrame').attr('src', 'howto.html');">Home</a>
+	</div>
+	<a href="#" id="closeFS">X</a>
 	<div class="top">
 		<form name="userinfo" action="login" method="post" id="userinfo">
 			<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
@@ -66,34 +69,35 @@
 		<div id="newMenuHover"
 			onmouseover="getElementById('newMenu').style.display='block'">
 			<h1>+</h1>
-			<table id="newMenu"
-				onmouseout="getElementById('newMenu').style.display='none'">
-				<tr>
-					<td id="firstMenu">
-						<input onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src" value="Refresh 1" type="button" /> 
-						<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
-						<input id="firstFB" type="button" value="full 1" />  
-					</td>
-					<td id="secondMenu">
-						<input onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src" value="Refresh 2" type="button" /> 
-						<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" /> 
-						<input id="secondFB" type="button" value="full 2" /> 
-					</td>
-				</tr>
-				<tr>
-					<td id="thirdMenu">
-						<input onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src" value="Refresh 3" type="button" /> 
-						<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
-						<input id="thirdFB" type="button" value="full 3" /> 
-					</td>
-					<td id="fourthMenu">
-						<input onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src" value="Refresh 4" type="button" /> <br /> 
-						<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
-						<input id="fourthFB" type="button" value="full 4" /> 	
-					</td>
-				</tr>
-			</table>
+		<table id="newMenu"
+			onmouseout="getElementById('newMenu').style.display='none'">
+			<tr>
+				<td id="firstMenu">
+					<input onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src" value="Refresh 1" type="button" /> 
+					<input onclick="$('#firstFrame').attr('src', 'blank.html');" value="Clear 1" type="button" />
+					<input id="firstFB" type="button" value="full 1" />  
+				</td>
+				<td id="secondMenu">
+					<input onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src" value="Refresh 2" type="button" /> 
+					<input onclick="$('#secondFrame').attr('src', 'blank.html');" value="Clear 2" type="button" /> 
+					<input id="secondFB" type="button" value="full 2" /> 
+				</td>
+			</tr>
+			<tr>
+				<td id="thirdMenu">
+					<input onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src" value="Refresh 3" type="button" /> 
+					<input onclick="$('#thirdFrame').attr('src', 'blank.html');" value="Clear 3" type="button" />
+					<input id="thirdFB" type="button" value="full 3" /> 
+				</td>
+				<td id="fourthMenu">
+					<input onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src" value="Refresh 4" type="button" /> <br /> 
+					<input onclick="$('#fourthFrame').attr('src', 'blank.html');" value="Clear 4" type="button" />
+					<input id="fourthFB" type="button" value="full 4" /> 	
+				</td>
+			</tr>
+		</table>
 		</div>
+		
 		<div class="frameDiv" id="firstF">
 			<iframe src="info.html" id="firstFrame"></iframe>
 		</div>
