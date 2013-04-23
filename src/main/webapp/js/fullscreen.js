@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$('#firstFB').click(function(){
-		console.log("clicked");
+	
 		if($(this).val() == 'full 1'){
 			resetcss();
 			$('.frameDiv').css('display', 'none');
