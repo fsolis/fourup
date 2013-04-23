@@ -37,9 +37,10 @@ public class signup extends HttpServlet
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status", "Success");
+		myResponse.put("Status", "Sign up Sucessful");
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
+		myResponse.put("Exists","This Email is Already Being Used.");
 		String strResponse = new Gson().toJson(myResponse);
 		PrintWriter out = response.getWriter();
 		try
@@ -57,7 +58,7 @@ public class signup extends HttpServlet
 				DBCursor cursor = accounts.find(query);
 				if (cursor.size() > 0) //check if email has already been registered
 				{
-					out.write(myResponse.get("Error")); //should output error
+					out.write(myResponse.get("Exists")); //should output error
 				} 
 				else //since email doesn't currently exist in DB, go ahead and register user
 				{
