@@ -19,19 +19,19 @@
 <script type="text/javascript" src="js/fourup.js"></script>
 <script type="text/javascript" src="gen_files/main.js"></script>
 <!--<script>
-		var create = function() {
-			linka = 'http://' + document.location.hostname + '?first=http://'
-					+ $('#first').val() + '&second=http://' + $('#second').val()
-					+ '&third=http://' + $('#third').val() + '&fourth=http://'
-					+ $('#fourth').val();
-			$('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
-			get_short_url(linka, login, api_key, function(short_url) {
-				console.log(short_url);
-				$('#result').val(short_url);
-			});
-		}
-		//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
-	</script> -->
+	var create = function() {
+		linka = 'http://' + document.location.hostname + '?first=http://'
+			+ $('#first').val() + '&second=http://' + $('#second').val()
+			+ '&third=http://' + $('#third').val() + '&fourth=http://'
+			+ $('#fourth').val();
+		$('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+		get_short_url(linka, login, api_key, function(short_url) {
+		console.log(short_url);
+		$('#result').val(short_url);
+		});
+	}
+//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
+</script> -->
 </head>
 <body>
 	<div id="menu"
@@ -51,13 +51,13 @@
 					id="result" size="40" type="text" /><br />
 			</form>
 			<input
-				onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"
+				onclick="document.getElementById('firstFrame').contentWindow.location.reload(true);"
 				value="Refresh 1" type="button" /> <input
-				onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src"
+				onclick="document.getElementById('secondFrame').contentWindow.location.reload(true);"
 				value="Refresh 2" type="button" /> <input
-				onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src"
+				onclick="document.getElementById('thirdFrame').contentWindow.location.reload(true);"
 				value="Refresh 3" type="button" /> <input
-				onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src"
+				onclick="document.getElementById('fourthFrame').contentWindow.location.reload(true);"
 				value="Refresh 4" type="button" /> <br /> <input
 				onclick="$('#firstFrame').attr('src', 'blank.html');"
 				value="Clear 1" type="button" /> <input
@@ -79,39 +79,54 @@
 		</form>
 	</div>
 	<div id="bottom" class="bottomContent">
-		<div id="newMenuHover" onmouseover="getElementById('newMenu').style.display='block'">
+		<div id="newMenuHover"
+			onmouseover="getElementById('newMenu').style.display='block'">
 			<h1>+</h1>
+			<div id="bottom" class="bottomContent">
+				<div id="firstF" class="frameDiv">
+					<iframe src="info.html" id="firstFrame"></iframe>
+				</div>
+				<div id="secondF" class="frameDiv">
+					<iframe src="gen.html" id="secondFrame"></iframe>
+				</div>
+				<div id="thirdF" class="frameDiv">
+					<iframe src="example.html" id="thirdFrame"></iframe>
+				</div>
+				<div id="fourthF" class="frameDiv">
+					<iframe src="howto.html" id="fourthFrame"></iframe>
+				</div>
+			</div>
+			<table id="newMenu"
+				onmouseout="getElementById('newMenu').style.display='none'">
+				<tr>
+					<td id="firstMenu">
+						<h1>1</h1>
+					</td>
+					<td id="secondMenu">
+						<h1>2</h1>
+					</td>
+				</tr>
+				<tr>
+					<td id="thirdMenu">
+						<h1>3</h1>
+					</td>
+					<td id="fourthMenu">
+						<h1>4</h1>
+					</td>
+				</tr>
+			</table>
+			<div class="frameDiv">
+				<iframe src="info.html" id="firstFrame"></iframe>
+			</div>
+			<div class="frameDiv">
+				<iframe src="gen.html" id="secondFrame"></iframe>
+			</div>
+			<div class="frameDiv">
+				<iframe src="example.html" id="thirdFrame"></iframe>
+			</div>
+			<div class="frameDiv">
+				<iframe src="howto.html" id="fourthFrame"></iframe>
+			</div>
 		</div>
-		<table id="newMenu" onmouseout="getElementById('newMenu').style.display='none'">
-			<tr>
-				<td id = "firstMenu">
-					<h1>1</h1>
-				</td>
-				<td id = "secondMenu">
-					<h1>2</h1>
-				</td>
-			</tr>
-			<tr>
-				<td id = "thirdMenu">
-					<h1>3</h1>
-				</td>
-				<td id = "fourthMenu">
-					<h1>4</h1>
-				</td>
-			</tr>
-		</table>
-		<div class="frameDiv">
-			<iframe src="info.html" id="firstFrame"></iframe>
-		</div>
-		<div class="frameDiv">
-			<iframe src="gen.html" id="secondFrame"></iframe>
-		</div>
-		<div class="frameDiv">
-			<iframe src="example.html" id="thirdFrame"></iframe>
-		</div>
-		<div class="frameDiv">
-			<iframe src="howto.html" id="fourthFrame"></iframe>
-		</div>
-	</div>
 </body>
 </html>
