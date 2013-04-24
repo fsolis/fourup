@@ -19,7 +19,7 @@
 <script type="text/javascript" src="js/fourup.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="gen_files/main.js"></script>
-<!--<script>
+<script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
 			+ $('#first').val() + '&second=http://' + $('#second').val()
@@ -31,8 +31,15 @@
 		$('#result').val(short_url);
 		});
 	}
-//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
-</script> -->
+
+	var toggle = function() {
+		var mydiv = document.getElementById('registrationForm');
+		if (mydiv.style.display === 'block' || mydiv.style.display === '')
+			mydiv.style.display = 'none';
+		else
+			mydiv.style.display = 'block'
+	}
+</script>
 </head>
 <body>
 	<div id="menu"
@@ -44,13 +51,12 @@
 		<div id="gen">
 			<h1 id="titlea">Enter four URLs</h1>
 			<form>
-				<input id="first" size="40" type="text" placeholder="" /><br /> <input
-					id="second" size="40" type="text" placeholder="" /><br /> <input
-					id="third" size="40" type="text" placeholder="" /><br /> <input
-					id="fourth" size="40" type="text" placeholder="" /><br /> <input
-					onclick="create('http://' + document.location.hostname)"
-					value="Make a link" type="button" /> <br /> <input id="result"
-					size="40" type="text" />
+				<input id="first" size="40" type="text" placeholder="" /><br />
+				<input id="second" size="40" type="text" placeholder="" /><br />
+				<input id="third" size="40" type="text" placeholder="" /><br />
+				<input id="fourth" size="40" type="text" placeholder="" /><br />
+				<input onclick="create('http://' + document.location.hostname)" value="Make a link" type="button" /><br />
+				<input id="result" size="40" type="text" />
 			</form> 
 		</div>
 	</div>
@@ -66,7 +72,7 @@
 				<input type="submit" name="submitLogin" value="Log in">
 			</form>
 		</div>
-		<div id="registerForm" onclick="getElementById('registrationForm').style.display='block'">
+		<div id="registerForm" onclick="toggle();">
 			<h3 id="registerLink">Create New Account</h3>
 			<div id="registrationForm">
 				<form id="registration" name="newuserinfo" action="register" method="post">
@@ -74,7 +80,6 @@
 					<label>Password:</label><input type="password" name="password"><br />
 					<label>Verify Password:</label><input type="password" name="verifypassword"><br />
 					<input type="submit" name="submitRegistration" value="Submit">
-					<input type="submit" name="cancelRegistration" value="Cancel">
 				</form>
 			</div>
 		</div>
