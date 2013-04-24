@@ -59,18 +59,22 @@
 	</div>
 	<a href="#" id="closeFS">X</a>
 	<div class="top">
-		<form id="loginForm" name="currentuserinfo" action="login" method="post">
-			<label>Email:</label><input type="text" name="email">
-			<label>Password:</label><input type="password" name="password">
-			<input type="submit" name="login" value="Log in">
-		</form>
-		<div id="registerForm" onmouseout="getElementById('registrationForm').style.display='none'" onmouseover="getElementById('registrationForm').style.display='block'">
+		<div id="loginDiv">
+			<form id="loginForm" name="currentuserinfo" action="login" method="post">
+				<label>Email:</label><input type="text" name="email">
+				<label>Password:</label><input type="password" name="password">
+				<input type="submit" name="submitLogin" value="Log in">
+			</form>
+		</div>
+		<div id="registerForm" onclick="getElementById('registrationForm').style.display='block'">
 			<h3 id="registerLink">Create New Account</h3>
 			<div id="registrationForm">
 				<form id="registration" name="newuserinfo" action="register" method="post">
 					<label>Email:</label><input type="text" name="email"><br />
 					<label>Password:</label><input type="password" name="password"><br />
+					<label>Verify Password:</label><input type="password" name="verifypassword"><br />
 					<input type="submit" name="submitRegistration" value="Submit">
+					<input type="submit" name="cancelRegistration" value="Cancel">
 				</form>
 			</div>
 		</div>
