@@ -213,3 +213,31 @@ iframe {
 #closeFS a {
 	text-decoration: none;
 }
+
+#registerLink {
+	background: black;
+	color: white;
+	width: 210px;
+	height: 25px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	display: block;
+	text-align: center;
+}
+
+#registrationForm {
+	background: white;
+	width: 196px;
+	border: 2px solid black;
+	padding: 5px;
+	display: none;
+	position: relative;
+	top: -20px;
+}
+
+#registerForm {
+	position: fixed;
+	top: -13px;
+	left: 275px;
+}
