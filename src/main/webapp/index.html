@@ -37,14 +37,12 @@
 		if (mydiv.style.display === 'block' || mydiv.style.display === '')
 			mydiv.style.display = 'none';
 		else
-			mydiv.style.display = 'block'
+			mydiv.style.display = 'block';
 	}
 </script>
 </head>
 <body>
-	<div id="menu"
-		onmouseover="getElementById('gen').style.display='block'"
-		onmouseout="getElementById('gen').style.display='none'">
+	<div id="menu" onmouseover="getElementById('gen').style.display='block'" onmouseout="getElementById('gen').style.display='none'">
 		<div id="arrow">
 			<h3 id="arrowtext">Make a New FourUp</h3>
 		</div>
@@ -75,7 +73,7 @@
 		<div id="registerForm" onclick="toggle();">
 			<h3 id="registerLink">Create New Account</h3>
 			<div id="registrationForm">
-				<form id="registration" name="newuserinfo" action="register" method="post">
+				<form id="registration" name="newuserinfo" action="signup" method="post">
 					<label>Email:</label><input type="text" name="email"><br />
 					<label>Password:</label><input type="password" name="password"><br />
 					<label>Verify Password:</label><input type="password" name="verifypassword"><br />
@@ -85,11 +83,9 @@
 		</div>
 	</div>
 	<div id="bottom" class="bottomContent">
-		<div id="newMenuHover"
-			onmouseover="getElementById('newMenu').style.display='block'">
+		<div id="newMenuHover" onmouseover="getElementById('newMenu').style.display='block'">
 			<h1>+</h1>
-		<table id="newMenu"
-			onmouseout="getElementById('newMenu').style.display='none'">
+		<table id="newMenu" onmouseout="getElementById('newMenu').style.display='none'">
 			<tr>
 				<td id="firstMenu">
 					<a href="#" onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"><img src="images/refresh_lightgrey.png" /></a> 
@@ -116,7 +112,6 @@
 			</tr>
 		</table>
 		</div>
-		
 		<div class="frameDiv" id="firstF">
 			<iframe src="info.html" id="firstFrame"></iframe>
 		</div>

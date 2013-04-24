@@ -23,15 +23,6 @@ import com.mongodb.MongoException;
 
 public class signup extends HttpServlet
 {
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		// Use "request" to read incoming HTTP headers (e.g. cookies)
-		// and HTML form data (e.g. data the user entered and submitted)
-		// Use "response" to specify the HTTP response line and headers
-		// (e.g. specifying the content type, setting cookies).
-		PrintWriter out = response.getWriter();
-		// Use "out" to send content to browser
-	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String email = request.getParameter("email");
@@ -42,42 +33,54 @@ public class signup extends HttpServlet
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
 		PrintWriter out = response.getWriter();
-		try
+		if (email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))//make sure email is properly formatted
 		{
-				//URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
-				MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-				DB db = mongoURI.connectDB(); //instance of databse
-				db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates db
-				//Set<string> accounts = db.getCollectionName("accounts");
-				//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
-				//DB db = mongo.getDB("fourup"); //gets fourup database
-				DBCollection accounts = db.getCollection("accounts"); //creates collection for accounts			
-				BasicDBObject query = new BasicDBObject(); //creates a basicdboject named query
-				query.put("email", email); //sets email to email
-				DBCursor cursor = accounts.find(query);
-				if (cursor.size() > 0) //check if email has already been registered
-				{
-					out.write(myResponse.get("Error")); //should output error
-				} 
-				else //since email doesn't currently exist in DB, go ahead and register user
-				{
-					BasicDBObject document = new BasicDBObject();
-					int salt = getSalt();
-					String hpass = passwrdHash(password,salt);
-					document.put("email", email);
-					document.put("salt", salt);
-					document.put("password", hpass);//this is where we need to hash the password
-					accounts.insert(document);
-					out.write(myResponse.get("Status"));
-				}
+			try
+			{
+					//URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
+					MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+					DB db = mongoURI.connectDB(); //instance of databse
+					//db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates d
+					//Set<string> accounts = db.getCollectionName("accounts");
+					//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+					//DB db = mongo.getDB("fourup"); //gets fourup database
+					DBCollection accounts = db.getCollection("accounts"); //creates collection for accounts			
+					BasicDBObject query = new BasicDBObject(); //creates a basic object named query
+					query.put("email", email); //sets email to email
+					DBCursor cursor = accounts.find(query);
+					if (cursor.size() > 0) //check if email has already been registered
+					{
+						out.write(myResponse.get("Error")); //should output error
+					} 
+					else //since email doesn't currently exist in DB, go ahead and register user
+					{
+						if (password.equals(verifypassword))//check that both of the passwords entered match each other
+						{
+							BasicDBObject document = new BasicDBObject();
+							int salt = getSalt();
+							String hpass = passwrdHash(password,salt);
+							document.put("email", email);
+							document.put("salt", salt);
+							document.put("password", hpass);//this is where we need to hash the password
+							accounts.insert(document);
+							out.write(myResponse.get("Status"));
+						}
+						else
+						{
+							out.write(myResponse.get("Error")); //should output error
+						}
+					}
 
-		} 
-		catch (MongoException e)
-		{
-				e.printStackTrace();
+			} 
+			catch (MongoException e)
+			{
+					e.printStackTrace();
+			}
 		}
-
-		
+		else
+		{
+			out.write(myResponse.get("Error")); //should output error
+		}
 	}
 	public String passwrdHash(String password,int salt)
 	{
