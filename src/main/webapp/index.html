@@ -59,11 +59,21 @@
 	</div>
 	<a href="#" id="closeFS">X</a>
 	<div class="top">
-		<form name="userinfo" action="login" method="post" id="userinfo">
-			<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
-				type="password" name="password"> <input type="submit"
-				name="login" value="Log in">
+		<form id="loginForm" name="currentuserinfo" action="login" method="post">
+			<label>Email:</label><input type="text" name="email">
+			<label>Password:</label><input type="password" name="password">
+			<input type="submit" name="login" value="Log in">
 		</form>
+		<div id="registerForm" onmouseout="getElementById('registrationForm').style.display='none'" onmouseover="getElementById('registrationForm').style.display='block'">
+			<font size="1">Create New Account</font>
+			<div id="registrationForm">
+				<form id="registration" name="newuserinfo" action="register" method="post">
+					<label>Email:</label><input type="text" name="email"><br />
+					<label>Password:</label><input type="password" name="password"><br />
+					<input type="submit" name="submitRegistration" value="Submit">
+				</form>
+			</div>
+		</div>
 	</div>
 	<div id="bottom" class="bottomContent">
 		<div id="newMenuHover"
