@@ -27,6 +27,7 @@ public class signup extends HttpServlet
 	{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String verifypassword = request.getParameter("verifypassword");
 		Map<String, String> myResponse = new HashMap<String, String>();
 		myResponse.put("Status", "Success");
 		myResponse.put("message", "what happened here");
@@ -54,14 +55,14 @@ public class signup extends HttpServlet
 					} 
 					else //since email doesn't currently exist in DB, go ahead and register user
 					{
-						if (password.equals(verifypassword))//check that both of the passwords entered match each other
+						if (password.equals(verifypassword)) //check that both of the passwords entered match each other
 						{
 							BasicDBObject document = new BasicDBObject();
 							int salt = getSalt();
 							String hpass = passwrdHash(password,salt);
 							document.put("email", email);
 							document.put("salt", salt);
-							document.put("password", hpass);//this is where we need to hash the password
+							document.put("password", hpass); //this is where we need to hash the password
 							accounts.insert(document);
 							out.write(myResponse.get("Status"));
 						}
