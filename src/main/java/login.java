@@ -9,8 +9,16 @@ import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
 import com.mongodb.MongoURI;
+import java.net.UnknownHostException;
+import com.mongodb.DB;
+import com.mongodb.MongoException;
 
 public class login extends HttpServlet
 {
@@ -32,9 +40,29 @@ public class login extends HttpServlet
 		myResponse.put("message", "what happened here");
 		myResponse.put("Error", "there was an error");
 		String strResponse = new Gson().toJson(myResponse);
-		// check if data exists in DB, if not then add
 		PrintWriter out = response.getWriter();
-		out.write(strResponse);
-		
+		try
+		{
+			MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+			DB db = mongoURI.connectDB(); //instance of databse
+			DBCollection accounts = db.getCollection("accounts");
+			BasicDBObject query = new BasicDBObject(); //creates a basic object named query
+			query.put("email", email);
+			DBCursor cursor = accounts.find(query);
+			if (cursor.size() > 0) //check if account exists
+			{
+				//1. verify password is correct
+				//2. set session to logged in
+				//3. put login info inside cookie for return visits
+			}
+			else
+			{
+				out.write(myResponse.get("Error")); //should output error
+			}
+		}
+		catch (MongoException e)
+		{
+				e.printStackTrace();
+		}
 	}
 }

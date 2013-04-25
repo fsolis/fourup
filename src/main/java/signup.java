@@ -17,9 +17,10 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 import com.mongodb.MongoURI;
 import java.net.UnknownHostException;
-import java.util.Set;
 import com.mongodb.DB;
 import com.mongodb.MongoException;
+import java.util.Set;
+
 
 public class signup extends HttpServlet
 {
