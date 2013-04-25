@@ -41,12 +41,12 @@ public class AccountObject
 		this.hPassword = hPassword;
 	}
 	
-	public ArrayList getSearchHistory()
+	public List getSearchHistory()
 	{
 		return this.searchHistory;
 	}
 	
-	public void setSearchHistory(ArrayList searchHistory)
+	public void setSearchHistory(List searchHistory)
 	{
 		this.searchHistory = searchHistory;
 	}
