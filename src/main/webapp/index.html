@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+
 	<div id="top">
 		<div id="gen" class="navigation"
 			onmouseover="getElementById('genMenu').style.display='block'"
@@ -62,31 +63,73 @@
 				</form>
 			</div>
 		</div>
-		<div id="register"
+
+		<div id="register" class="navigation"
 			onmouseover="getElementById('registrationForm').style.display='block'"
-			onmouseout="getElementById('registrationForm').style.display='none'"  class="navigation">
+			onmouseout="getElementById('registrationForm').style.display='none'">
 			<h3 id="registerLink">Create New Account</h3>
 			<div id="registrationForm">
-				<form id="registration" name="newuserinfo" action="signup" method="post">
-					<label>Email:</label><input type="text" name="email"><br />
-					<label>Password:</label><input type="password" name="password"><br />
-					<label>Verify Password:</label><input type="password" name="verifypassword"><br />
-					<input type="submit" name="submitRegistration" value="Submit">
+				<form id="registration" name="newuserinfo" action="signup"
+					method="post">
+					<label>Email: </label><input type="text" name="email"><br />
+					<label>Password: </label><input type="password" name="password"><br />
+					<label>Verify Password: </label><input type="password"
+						name="verifypassword"><br /> <input type="submit"
+						name="submitRegistration" value="Submit">
 				</form>
 			</div>
 		</div>
+
 		<a href="new_index.html" id="backToFourUp" class="navigation"
 			onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'gen.html'); $('#thirdFrame').attr('src', 'example.html'); $('#fourthFrame').attr('src', 'howto.html');">
 			<h3>Home</h3>
 		</a>
+
 		<form id="loginForm" name="currentuserinfo" action="login"
 			method="post">
-			<label>Email:</label><input type="text" name="email"> <label>Password:</label><input
-				type="password" name="password"> <input type="submit"
+			<label>Email: </label><input type="text" name="email"> <label>Password:
+			</label><input type="password" name="password"> <input type="submit"
 				name="submitLogin" value="Log in">
 		</form>
 	</div>
+
+	<div id="centerMenu"
+		onmouseover="getElementById('centerMenuHover').style.display='block'">
+		<h1>+</h1>
+		<table id="centerMenuHover"
+			onmouseout="getElementById('centerMenuHover').style.display='none'">
+			<tr>
+				<td id="firstMenu"><a href="#"
+					onclick="$('#firstFrame').attr('src', 'blank.html');"><img
+						src="images/close_lightgrey.png" /></a><a href="#"
+					onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"><img
+						src="images/refresh_lightgrey.png" /></a> <br /> <a id="firstFB"
+					href="#">fullscreen</a></td>
+				<td id="secondMenu"><a href="#"
+					onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src"><img
+						src="images/refresh_darkgrey.png" /></a> <a href="#"
+					onclick="$('#secondFrame').attr('src', 'blank.html');"><img
+						src="images/close_darkgrey.png" /></a> <br /> <a id="secondFB"
+					href="#">fullscreen</a></td>
+			</tr>
+			<tr>
+				<td id="thirdMenu"><a id="thirdFB" href="#">fullscreen</a> <br />
+					<a href="#" onclick="$('#thirdFrame').attr('src', 'blank.html');"><img
+						src="images/close_darkgrey.png" /></a> <a href="#"
+					onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src"><img
+						src="images/refresh_darkgrey.png" /></a></td>
+				<td id="fourthMenu"><a id="fourthFB" href="#">fullscreen</a> <br />
+					<a href="#"
+					onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src"><img
+						src="images/refresh_lightgrey.png" /></a><a href="#"
+					onclick="$('#fourthFrame').attr('src', 'blank.html');"><img
+						src="images/close_lightgrey.png" /></a></td>
+			</tr>
+		</table>
+	</div>
+
 	<div id="bottom">
+		<a href="#" id="closeFS">X</a>
 		<div class="frameDiv" id="firstF">
 			<iframe src="info.html" id="firstFrame"></iframe>
 		</div>
@@ -100,5 +143,6 @@
 			<iframe src="howto.html" id="fourthFrame"></iframe>
 		</div>
 	</div>
+
 </body>
 </html>
