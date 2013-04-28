@@ -2,23 +2,18 @@ package edu.cst438.fourup;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import java.net.UnknownHostException;
+
 import com.google.gson.Gson;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.Mongo;
-import com.mongodb.MongoException;
-import com.mongodb.MongoURI;
-import java.net.UnknownHostException;
-import com.mongodb.DB;
-import com.mongodb.MongoException;
+import com.mongodb.*;
 
 public class login extends HttpServlet
 {
@@ -51,9 +46,13 @@ public class login extends HttpServlet
 			DBCursor cursor = accounts.find(query);
 			if (cursor.size() > 0) //check if account exists
 			{
-				//1. verify password is correct
-				//2. set session to logged in
-				//3. put login info inside cookie for return visits
+				//1. pull data from database
+				DBObject tobj = cursor.next();
+		        String tempEmail = (String)tobj.get("email");
+		        String tempPassword = (String)tobj.get("hpass");
+				//2. verify password is correct
+				//3. set session to logged in
+				//4. put login info inside cookie for return visits
 			}
 			else
 			{
