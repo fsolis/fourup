@@ -5,21 +5,21 @@ import java.util.List;
  
 public class AccountObject
 {
-	private int id = 0;
 	private String email = "";
 	private String hPassword = "";
 	private List<String> searchHistory = new ArrayList<String>();
 	
-	//getter and setter methods
-	public int getId()
+	public AccountObject(String email, String hPassword)
 	{
-		return this.id;
+		this.email = email;
+		this.hPassword = hPassword;
 	}
 	
-	public void setId(int id)
+	public String toString()
 	{
-		this.id = id;
+		return this.email + "\r\n" + this.hPassword;
 	}
+	//getter and setter methods
 	
 	public String getEmail()
 	{

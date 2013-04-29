@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.util.*;
+
 import com.google.gson.Gson;
 import java.net.URI;
 import com.mongodb.BasicDBObject;
@@ -30,9 +31,10 @@ public class signup extends HttpServlet
 		String password = request.getParameter("password");
 		String verifypassword = request.getParameter("verifypassword");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status", "Success");
-		myResponse.put("message", "what happened here");
-		myResponse.put("Error", "there was an error");
+		myResponse.put("Status", "Account has been created.");
+		myResponse.put("Invalid", "The email address has not been entered correctly.");
+		myResponse.put("Failed", "These passwords do not match. Please pick a new password.");
+		myResponse.put("Error", "Account already exists using this email address.");
 		String strResponse = new Gson().toJson(myResponse);
 		PrintWriter out = response.getWriter();
 		if (email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))//make sure email is properly formatted
@@ -40,12 +42,12 @@ public class signup extends HttpServlet
 			try
 			{
 					//URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
-					MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-					DB db = mongoURI.connectDB(); //instance of databse
+					//MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+					//DB db = mongoURI.connectDB(); //instance of databse
 					//db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates d
 					//Set<string> accounts = db.getCollectionName("accounts");
-					//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
-					//DB db = mongo.getDB("fourup"); //gets fourup database
+					Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+					DB db = mongo.getDB("fourup"); //gets fourup database
 					DBCollection accounts = db.getCollection("accounts"); //creates collection for accounts			
 					BasicDBObject query = new BasicDBObject(); //creates a basic object named query
 					query.put("email", email); //sets email to email
@@ -66,10 +68,20 @@ public class signup extends HttpServlet
 							document.put("password", hpass); //this is where we need to hash the password
 							accounts.insert(document);
 							out.write(myResponse.get("Status"));
+							AccountObject user = new AccountObject(email, hpass);
+							//set session
+							HttpSession session = request.getSession();
+							session.setAttribute("currentUser", email);
+							//return cookie
+							Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
+							response.addCookie(cookie);
+							//redirect to homepage
+							response.sendRedirect("index.html"); //should add check to index page for cookie with login information 
 						}
 						else
 						{
-							out.write(myResponse.get("Error")); //should output error
+							out.write(myResponse.get("Failed")); //should output error
+							
 						}
 					}
 
@@ -81,10 +93,10 @@ public class signup extends HttpServlet
 		}
 		else
 		{
-			out.write(myResponse.get("Error")); //should output error
+			out.write(myResponse.get("Invalid")); //should output error
 		}
 	}
-	public String passwrdHash(String password,int salt)
+	public static String passwrdHash(String password,int salt)
 	{
 		char c;
 		int n;
