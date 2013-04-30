@@ -61,7 +61,7 @@ $(document).ready(function(){
 			$('#fourthF').css('height', '100%');
 			$('#fourthF').css('width','100%');
 			$('#centerMenu').css('display', 'none');
-			$('#centerMenuHover').css('display', 'none');
+			$('#centerMenuHover').css('display', 'none') ;
 			$('#closeFS').css('display', 'block');
 			$(this).val('fourup');
 		}else{
