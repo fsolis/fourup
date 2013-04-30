@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/fourup.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="gen_files/main.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 <script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
@@ -69,8 +70,7 @@
 			onmouseout="getElementById('registrationForm').style.display='none'">
 			<h3 id="registerLink">Create New Account</h3>
 			<div id="registrationForm">
-				<form id="registration" name="newuserinfo" action="signup"
-					method="post">
+				<form id="registration" name="newuserinfo" >
 					<label>Email: </label><input type="text" name="email"><br />
 					<label>Password: </label><input type="password" name="password"><br />
 					<label>Verify Password: </label><input type="password"

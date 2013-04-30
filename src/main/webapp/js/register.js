@@ -1,17 +1,17 @@
-function register(){
-	//do some stuff
-	alert("register called")
-	var email = $("#regEmail").val();
-	var password = $("#password1Reg").val()
-	
-	$.ajax({
-		type : "PUT",
-		url : '/signup?email=' + email + '&pwd=' + password ,
-		success: function(data) {
+$(document).ready(function(){
+	$("#registration").submit(function(e){
+
+		e.preventDefault();
+		alert("register called");
+		
+		var userinfo = $("#registration").serialize();
+		
+		$.post("signup",userinfo, function(data){
 			alert(data);
-		},
-		error : function() {
-			alert("Sorry, The requested mock entity could not be found.");
-		}
+		});
+		return false;
+
 	});
-}
+});
+
+

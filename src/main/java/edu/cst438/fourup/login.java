@@ -36,13 +36,15 @@ public class login extends HttpServlet
 			DBCollection accounts = db.getCollection("accounts");
 			BasicDBObject query = new BasicDBObject(); //creates a basic object named query
 			query.put("email", email);
+			System.out.println("email: " + email);
 			DBCursor cursor = accounts.find(query);
 			if (cursor.size() > 0) //check if account exists
 			{
 				//pull data from database
-				DBObject tobj = cursor.curr();
+				DBObject tobj = cursor.next();
 		        String tempEmail = (String)tobj.get("email");
 		        String tempPassword = (String)tobj.get("password");
+		        System.out.println("tempEmail: " + tempEmail);
 		        int tempSalt = (Integer)tobj.get("salt");
 				//verify password is correct
 		        String testPassword = signup.passwrdHash(password, tempSalt);
