@@ -160,6 +160,8 @@ html,body a {
 	font-size: x-large;
 	opacity: 0.6;
 	filter: alpha(opacity = 60);
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 #closeFS:hover {
