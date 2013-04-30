@@ -50,4 +50,8 @@ public class AccountObject
 	{
 		this.searchHistory = searchHistory;
 	}
+
+	public void addSearchItem(String anItem){
+		this.searchHistory.add(anItem);
+	}
 }
