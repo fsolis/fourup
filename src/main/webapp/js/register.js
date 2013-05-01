@@ -5,11 +5,22 @@ $(document).ready(function(){
 		alert("register called");
 		
 		var userinfo = $("#registration").serialize();
-		
-		$.post("signup",userinfo, function(data){
-			alert(data);
+		var tester;
+		tester = $.post("signup",userinfo, function(data){
+			console.log(data);
+			//console.log(tester.getResponseHeader('test'));
 		});
 		return false;
+/*
+		$.ajax({
+			type: post,
+			success: function(data, textStatus, xhr){
+
+			},
+
+
+		})
+*/
 
 	});
 });

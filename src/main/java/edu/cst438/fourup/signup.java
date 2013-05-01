@@ -31,11 +31,6 @@ public class signup extends HttpServlet
 		String password = request.getParameter("password");
 		String verifypassword = request.getParameter("verifypassword");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status", "Account has been created.");
-		myResponse.put("Invalid", "The email address has not been entered correctly.");
-		myResponse.put("Failed", "These passwords do not match. Please pick a new password.");
-		myResponse.put("Error", "Account already exists using this email address.");
-		String strResponse = new Gson().toJson(myResponse);
 		PrintWriter out = response.getWriter();
 		if (email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))//make sure email is properly formatted
 		{
@@ -54,7 +49,8 @@ public class signup extends HttpServlet
 					DBCursor cursor = accounts.find(query);
 					if (cursor.size() > 0) //check if email has already been registered
 					{
-						out.write(myResponse.get("Error")); //should output error
+						myResponse.put("Status", "Error");
+						myResponse.put("Error", "Account already exists using this email address.");
 					} 
 					else //since email doesn't currently exist in DB, go ahead and register user
 					{
@@ -67,7 +63,8 @@ public class signup extends HttpServlet
 							document.put("salt", salt);
 							document.put("password", hpass); //this is where we need to hash the password
 							accounts.insert(document);
-							out.write(myResponse.get("Status"));
+							myResponse.put("Status", "Sucess");
+							myResponse.put("Sucess", "Account has been Created");
 							AccountObject user = new AccountObject(email, hpass);
 							//set session
 							HttpSession session = request.getSession();
@@ -76,11 +73,16 @@ public class signup extends HttpServlet
 							Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
 							response.addCookie(cookie);
 							//redirect to homepage
-							response.sendRedirect("index.html"); //should add check to index page for cookie with login information 
+							String message = "this is a test";
+							myResponse.put("html", "<html></html>");
+							response.setContentType("application/json");
+							response.setStatus(HttpServletResponse.SC_OK);
+							//response.sendRedirect("index.html"); //should add check to index page for cookie with login information 
 						}
 						else
 						{
-							out.write(myResponse.get("Failed")); //should output error
+							myResponse.put("Status", "Failed");
+							myResponse.put("Failed", "Passwords do not match.");
 							
 						}
 					}
@@ -88,13 +90,19 @@ public class signup extends HttpServlet
 			} 
 			catch (MongoException e)
 			{
-					e.printStackTrace();
+					
+				out.write(e.getMessage());
 			}
 		}
 		else
 		{
-			out.write(myResponse.get("Invalid")); //should output error
+			myResponse.put("Status", "Invalid");
+			myResponse.put("Invalid", "The email address has not been entered correctly."); //should output error
 		}
+
+		String strResponse = new Gson().toJson(myResponse);
+		response.getWriter().write(strResponse);
+		response.getWriter().close();
 	}
 	public static String passwrdHash(String password,int salt)
 	{
