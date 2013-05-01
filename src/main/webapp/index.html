@@ -21,6 +21,7 @@
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="gen_files/main.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
@@ -85,9 +86,8 @@
 			onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'gen.html'); $('#thirdFrame').attr('src', 'example.html'); $('#fourthFrame').attr('src', 'howto.html');">
 			<h3>Home</h3>
 		</a>
-
-		<form id="loginForm" name="currentuserinfo" action="login"
-			method="post">
+		<div id ="loggedIn" class ="hidden"></div>
+		<form id="loginForm" name="currentuserinfo">
 			<label>Email: </label><input type="text" name="email"> <label>Password:
 			</label><input type="password" name="password"> <input type="submit"
 				name="submitLogin" value="Log in">

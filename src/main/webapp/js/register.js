@@ -8,19 +8,10 @@ $(document).ready(function(){
 		var tester;
 		tester = $.post("signup",userinfo, function(data){
 			console.log(data);
+			console.log(data.Status)
 			//console.log(tester.getResponseHeader('test'));
 		});
 		return false;
-/*
-		$.ajax({
-			type: post,
-			success: function(data, textStatus, xhr){
-
-			},
-
-
-		})
-*/
 
 	});
 });

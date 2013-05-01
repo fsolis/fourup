@@ -22,11 +22,6 @@ public class login extends HttpServlet
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Map<String, String> myResponse = new HashMap<String, String>();
-		myResponse.put("Status ", "Success");
-		myResponse.put("Error", "User does not exist.");
-		myResponse.put("Invalid", "The password entered is not correct. Please try again.");
-		String strResponse = new Gson().toJson(myResponse);
-		PrintWriter out = response.getWriter();
 		try
 		{
 			//MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
@@ -57,22 +52,34 @@ public class login extends HttpServlet
 					session.setAttribute("currentPw", password);
 					Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
 					response.addCookie(cookie);
-					response.sendRedirect("index.html"); //should add check to index page for cookie with login information 
+					response.setContentType("application/json");
+					response.setStatus(HttpServletResponse.SC_OK);
+					myResponse.put("Status", "Sucess");
+					myResponse.put("Sucess", "Account has been Created");
+					myResponse.put("html", "<span><a href=''>" +  email + "</a></span>");
+					//response.sendRedirect("index.html"); //should add check to index page for cookie with login information 
 		        }
 		        else
 		        {
 		        	//invalid password error
-		        	out.write(myResponse.get("Invalid"));
+		        	myResponse.put("Status", "Invalid");
+					myResponse.put("Invalid", "The password entered is not correct. Please try again.");
 		        }
 			}
 			else
 			{
-				out.write(myResponse.get("Error")); //should output error
+				myResponse.put("Status", "Error");
+				myResponse.put("Error", "User does not exist");
 			}
 		}
 		catch (MongoException e)
 		{
 				e.printStackTrace();
 		}
+
+		String strResponse = new Gson().toJson(myResponse);
+		response.getWriter().write(strResponse);
+		response.getWriter().close();
+
 	}
 }

@@ -174,7 +174,19 @@ html,body a {
 	height: 50%;
 	width: 50%;
 }
-
+#loggedIn{
+	color: black !important;
+	float: right;
+	display: inline-block;
+	height: 36px;
+}
+#loggedIn a{
+	color: black !important;
+}
+.hidden
+{
+	display: none !important; 
+}
 iframe {
 	width: 100%;
 	height: 100%; seamless;
