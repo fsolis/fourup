@@ -28,12 +28,13 @@
 				+ $('#first').val() + '&second=http://' + $('#second').val()
 				+ '&third=http://' + $('#third').val() + '&fourth=http://'
 				+ $('#fourth').val();
-		$('#titlea')
-				.html(
-						'<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+		
 		get_short_url(linka, login, api_key, function(short_url) {
 			console.log(short_url);
-			$('#result').val(short_url);
+			$('#titlea')
+				.html(
+						'<a href="' + short_url + '" target="_new">Here is your fourup.</a>');
+			
 		});
 	}
 
@@ -55,14 +56,13 @@
 			<h3 id="genText">Make a New FourUp</h3>
 			<div id="genMenu">
 				<h1 id="titlea">Enter four URLs</h1>
-				<form>
+				<form id="searchForm">
 					<input id="first" size="40" type="text" placeholder="" /><br /> <input
 						id="second" size="40" type="text" placeholder="" /><br /> <input
 						id="third" size="40" type="text" placeholder="" /><br /> <input
 						id="fourth" size="40" type="text" placeholder="" /><br /> <input
 						onclick="create('http://' + document.location.hostname)"
-						value="Make a link" type="button" /><br /> <input id="result"
-						size="40" type="text" />
+						value="Make a link" type="button" /><br />
 				</form>
 			</div>
 		</div>
