@@ -10,6 +10,7 @@ import java.util.*;
 
 import com.google.gson.Gson;
 import java.net.URI;
+import com.mongodb.*;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -36,7 +37,7 @@ public class signup extends HttpServlet
 		{
 			try
 			{
-					URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
+					//URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
 					MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
 					DB db = mongoURI.connectDB(); //instance of databse
 					db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates d

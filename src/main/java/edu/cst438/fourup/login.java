@@ -2,18 +2,26 @@ package edu.cst438.fourup;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-
-import java.net.UnknownHostException;
+import java.util.*;
 
 import com.google.gson.Gson;
-
+import java.net.URI;
 import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
+import com.mongodb.MongoURI;
+import java.net.UnknownHostException;
+import com.mongodb.DB;
+import com.mongodb.MongoException;
+import java.util.Set;
 
 public class login extends HttpServlet
 {
@@ -26,7 +34,7 @@ public class login extends HttpServlet
 		{
 			MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
 			DB db = mongoURI.connectDB(); //instance of databse
-		       db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
+		        db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
 			//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
 			//DB db = mongo.getDB("fourup"); //gets fourup database
 			DBCollection accounts = db.getCollection("accounts");
