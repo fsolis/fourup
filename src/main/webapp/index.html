@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css" href="css/fourup.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
+<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -19,16 +20,20 @@
 <script type="text/javascript" src="js/fourup.js"></script>
 <script type="text/javascript" src="js/fullscreen.js"></script>
 <script type="text/javascript" src="gen_files/main.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
-			+ $('#first').val() + '&second=http://' + $('#second').val()
-			+ '&third=http://' + $('#third').val() + '&fourth=http://'
-			+ $('#fourth').val();
-		$('#titlea').html('<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+				+ $('#first').val() + '&second=http://' + $('#second').val()
+				+ '&third=http://' + $('#third').val() + '&fourth=http://'
+				+ $('#fourth').val();
+		$('#titlea')
+				.html(
+						'<a href="' + linka + '" target="_new">Here is your fourup.</a>');
 		get_short_url(linka, login, api_key, function(short_url) {
-		console.log(short_url);
-		$('#result').val(short_url);
+			console.log(short_url);
+			$('#result').val(short_url);
 		});
 	}
 
@@ -42,76 +47,90 @@
 </script>
 </head>
 <body>
-	<div id="menu" onmouseover="getElementById('gen').style.display='block'" onmouseout="getElementById('gen').style.display='none'">
-		<div id="arrow">
-			<h3 id="arrowtext">Make a New FourUp</h3>
-		</div>
-		<div id="gen">
-			<h1 id="titlea">Enter four URLs</h1>
-			<form>
-				<input id="first" size="40" type="text" placeholder="" /><br />
-				<input id="second" size="40" type="text" placeholder="" /><br />
-				<input id="third" size="40" type="text" placeholder="" /><br />
-				<input id="fourth" size="40" type="text" placeholder="" /><br />
-				<input onclick="create('http://' + document.location.hostname)" value="Make a link" type="button" /><br />
-				<input id="result" size="40" type="text" />
-			</form> 
-		</div>
-	</div>
-	<div id="navigation">
-		<a href="#" id="backToFourUp" onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'gen.html'); $('#thirdFrame').attr('src', 'example.html'); $('#fourthFrame').attr('src', 'howto.html');">Home</a>
-	</div>
-	<a href="#" id="closeFS">X</a>
-	<div class="top">
-		<div id="loginDiv">
-			<form id="loginForm" name="currentuserinfo" action="login" method="post">
-				<label>Email:</label><input type="text" name="email">
-				<label>Password:</label><input type="password" name="password">
-				<input type="submit" name="submitLogin" value="Log in">
-			</form>
-		</div>
-		<div id="registerForm" onclick="toggle();">
-			<h3 id="registerLink">Create New Account</h3>
-			<div id="registrationForm">
-				<form id="registration" name="newuserinfo" action="signup" method="post">
-					<label>Email:</label><input type="text" name="email"><br />
-					<label>Password:</label><input type="password" name="password"><br />
-					<label>Verify Password:</label><input type="password" name="verifypassword"><br />
-					<input type="submit" name="submitRegistration" value="Submit">
+
+	<div id="top">
+		<div id="gen" class="navigation"
+			onmouseover="getElementById('genMenu').style.display='block'"
+			onmouseout="getElementById('genMenu').style.display='none'">
+			<h3 id="genText">Make a New FourUp</h3>
+			<div id="genMenu">
+				<h1 id="titlea">Enter four URLs</h1>
+				<form>
+					<input id="first" size="40" type="text" placeholder="" /><br /> <input
+						id="second" size="40" type="text" placeholder="" /><br /> <input
+						id="third" size="40" type="text" placeholder="" /><br /> <input
+						id="fourth" size="40" type="text" placeholder="" /><br /> <input
+						onclick="create('http://' + document.location.hostname)"
+						value="Make a link" type="button" /><br /> <input id="result"
+						size="40" type="text" />
 				</form>
 			</div>
 		</div>
+
+		<div id="register" class="navigation"
+			onmouseover="getElementById('registrationForm').style.display='block'"
+			onmouseout="getElementById('registrationForm').style.display='none'">
+			<h3 id="registerLink">Create New Account</h3>
+			<div id="registrationForm">
+				<form id="registration" name="newuserinfo" >
+					<label>Email: </label><input type="text" name="email"><br />
+					<label>Password: </label><input type="password" name="password"><br />
+					<label>Verify Password: </label><input type="password"
+						name="verifypassword"><br /> <input type="submit"
+						name="submitRegistration" value="Submit">
+				</form>
+			</div>
+		</div>
+
+		<a href="index.html" id="backToFourUp" class="navigation"
+			onclick="$('#firstFrame').attr('src', 'info.html'); $('#secondFrame').attr('src', 'gen.html'); $('#thirdFrame').attr('src', 'example.html'); $('#fourthFrame').attr('src', 'howto.html');">
+			<h3>Home</h3>
+		</a>
+		<div id ="loggedIn" class ="hidden"></div>
+		<form id="loginForm" name="currentuserinfo">
+			<label>Email: </label><input type="text" name="email"> <label>Password:
+			</label><input type="password" name="password"> <input type="submit"
+				name="submitLogin" value="Log in">
+		</form>
 	</div>
-	<div id="bottom" class="bottomContent">
-		<div id="newMenuHover" onmouseover="getElementById('newMenu').style.display='block'">
-			<h1>+</h1>
-		<table id="newMenu" onmouseout="getElementById('newMenu').style.display='none'">
+
+	<div id="centerMenu"
+		onmouseover="getElementById('centerMenuHover').style.display='block'">
+		<h1>+</h1>
+		<table id="centerMenuHover"
+			onmouseout="getElementById('centerMenuHover').style.display='none'">
 			<tr>
-				<td id="firstMenu">
-					<a href="#" onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"><img src="images/refresh_lightgrey.png" /></a> 
-					<a href="#" onclick="$('#firstFrame').attr('src', 'blank.html');"><img src="images/close_lightgrey.png" /></a> <br />
-					<a id="firstFB" href="#" >fullscreen</a>  
-				</td>
-				<td id="secondMenu">
-					<a href="#" onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src"><img src="images/refresh_darkgrey.png" /></a>
-					<a href="#" onclick="$('#secondFrame').attr('src', 'blank.html');"><img src="images/close_darkgrey.png" /></a> <br />
-					<a id="secondFB" href="#" >fullscreen</a>  
-				</td>
+				<td id="firstMenu"><a href="javascript:void(0);"
+					onclick="$('#firstFrame').attr('src', 'blank.html');"><img
+						src="images/close_lightgrey.png" /></a><a href="javascript:void(0);"
+					onclick="document.getElementById('firstFrame').src = document.getElementById('firstFrame').src"><img
+						src="images/refresh_lightgrey.png" /></a> <br /> <a id="firstFB"
+					href="javascript:void(0);">fullscreen</a></td>
+				<td id="secondMenu"><a href="javascript:void(0);"
+					onclick="document.getElementById('secondFrame').src = document.getElementById('secondFrame').src"><img
+						src="images/refresh_darkgrey.png" /></a> <a href="javascript:void(0);"
+					onclick="$('#secondFrame').attr('src', 'blank.html');"><img
+						src="images/close_darkgrey.png" /></a> <br /> <a id="secondFB"
+					href="javascript:void(0);">fullscreen</a></td>
 			</tr>
 			<tr>
-				<td id="thirdMenu">
-					<a id="thirdFB" href="#" >fullscreen</a>  <br />
-					<a href="#" onclick="$('#thirdFrame').attr('src', 'blank.html');"><img src="images/close_darkgrey.png" /></a>
-					<a href="#" onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src"><img src="images/refresh_darkgrey.png" /></a>
-				</td>
-				<td id="fourthMenu">
-					<a id="fourthFB" href="#" >fullscreen</a>  <br />
-					<a href="#" onclick="$('#fourthFrame').attr('src', 'blank.html');"><img src="images/close_lightgrey.png" class="lightclose" /></a>
-					<a href="#" onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src"><img src="images/refresh_lightgrey.png" /></a>	
-				</td>
+				<td id="thirdMenu"><a id="thirdFB" href="javascript:void(0);">fullscreen</a> <br />
+					<a href="javascript:void(0);" onclick="$('#thirdFrame').attr('src', 'blank.html');"><img
+						src="images/close_darkgrey.png" /></a> <a href="javascript:void(0);"
+					onclick="document.getElementById('thirdFrame').src = document.getElementById('thirdFrame').src"><img
+						src="images/refresh_darkgrey.png" /></a></td>
+				<td id="fourthMenu"><a id="fourthFB" href="javascript:void(0);">fullscreen</a> <br />
+					<a href="javascript:void(0);"
+					onclick="document.getElementById('fourthFrame').src = document.getElementById('fourthFrame').src"><img
+						src="images/refresh_lightgrey.png" /></a><a href="javascript:void(0);"
+					onclick="$('#fourthFrame').attr('src', 'blank.html');"><img
+						src="images/close_lightgrey.png" /></a></td>
 			</tr>
 		</table>
-		</div>
+	</div>
+
+	<div id="bottom">
+		<a href="javascript:void(0);" id="closeFS">X</a>
 		<div class="frameDiv" id="firstF">
 			<iframe src="info.html" id="firstFrame"></iframe>
 		</div>
@@ -125,5 +144,6 @@
 			<iframe src="howto.html" id="fourthFrame"></iframe>
 		</div>
 	</div>
+
 </body>
 </html>

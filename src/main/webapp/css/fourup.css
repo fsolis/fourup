@@ -11,6 +11,14 @@ html, body
 	overflow: hidden;
 }
 
-html a, body a {
+a {
 	color: lightgrey;
+}
+
+img {
+	border: none;
+}
+
+img a {
+	border: none;
 }

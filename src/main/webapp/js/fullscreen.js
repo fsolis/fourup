@@ -8,8 +8,8 @@ $(document).ready(function(){
 			$('#firstF').css('display', 'block');
 			$('#firstF').css('height', '100%');
 			$('#firstF').css('width','100%');
-			$('#newMenuHover').css('display', 'none');
-			$('#newMenu').css('display', 'none');
+			$('#centerMenu').css('display', 'none');
+			$('#centerMenuHover').css('display', 'none');
 			$('#closeFS').css('display', 'block');
 			$(this).val('fourup');
 		}else{
@@ -26,8 +26,8 @@ $(document).ready(function(){
 			$('#secondF').css('display', 'block');
 			$('#secondF').css('height', '100%');
 			$('#secondF').css('width','100%');
-			$('#newMenuHover').css('display', 'none');
-			$('#newMenu').css('display', 'none')
+			$('#centerMenu').css('display', 'none');
+			$('#centerMenuHover').css('display', 'none')
 			$('#closeFS').css('display', 'block');;
 			$(this).val('fourup');
 		}else{
@@ -43,8 +43,8 @@ $(document).ready(function(){
 			$('#thirdF').css('display', 'block');
 			$('#thirdF').css('height', '100%');
 			$('#thirdF').css('width','100%');
-			$('#newMenuHover').css('display', 'none');
-			$('#newMenu').css('display', 'none');
+			$('#centerMenu').css('display', 'none');
+			$('#centerMenuHover').css('display', 'none');
 			$('#closeFS').css('display', 'block');
 			$(this).val('fourup');
 		}else{
@@ -60,8 +60,8 @@ $(document).ready(function(){
 			$('#fourthF').css('display', 'block');
 			$('#fourthF').css('height', '100%');
 			$('#fourthF').css('width','100%');
-			$('#newMenuHover').css('display', 'none');
-			$('#newMenu').css('display', 'none');
+			$('#centerMenu').css('display', 'none');
+			$('#centerMenuHover').css('display', 'none') ;
 			$('#closeFS').css('display', 'block');
 			$(this).val('fourup');
 		}else{
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		$('#fourthF').css('display', '');
 		$('#fourthF').css('height', '');
 		$('#fourthF').css('width','');
-		$('#newMenuHover').css('display', 'block');
+		$('#centerMenu').css('display', 'block');
 		$('#closeFS').css('display', 'none');
 	}
 });
