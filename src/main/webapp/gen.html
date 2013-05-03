@@ -9,13 +9,10 @@
 		<meta name="viewport" content="width=device-width">
 		<script type="text/javascript" src="gen_files/ga.js" async="" type="text/javascript"></script>
 		<script type="text/javascript" src="gen_files/jquery.js"></script>
-		<script type="text/javascript" src="js/vendor/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="gen_files/modernizr-2.js"></script>
 		<script type="text/javascript" src="js/shortUrl.js"></script>
 		<script type="text/javascript" src="js/fourup.js"></script>
 		<script src="gen_files/main.js"></script>
-
-		</script>
 		<style type="text/css">
 		img {
 			float: left; 
@@ -36,13 +33,18 @@
 	<body>
 		<div class="wrapper">
 			<div class="row">
-				<h1 id="titlea">Enter four URLs</h3>
+				<h1 id="titlea">Enter four URLs</h1>
+				No need to include "http://", we'll add that for you. 
+				<br />
+				Unfortunately, some sites such as Google and Facebook will not work with fourup.
+				<br/><br/>
 				<input id="first" size="40" type="text"><br>
 				<input id="second" size="40" type="text"><br>
 				<input id="third" size="40" type="text"><br>
 				<input id="fourth" size="40" type="text"><br>
 				<input onclick="create()" value="Make a link" type="button">
-				<input id="result" size="90" type="text"><br>
+				<br />
+				<input id="result" size="40" type="text"><br>
 			</div>
 		</div>
 		

@@ -12,8 +12,11 @@ function get_short_url(long_url, login, api_key, func) {
 	});
 }
 
-function create() {
-	linka = 'http://shielded-dusk-6725.herokuapp.com' + '?first=http://' + $('#first').val()
+function create(hostname) {
+	if(hostname == null){
+		hostname = "http://fourup-v1-9.herokuapp.com";
+	}
+	linka = hostname + '?first=http://' + $('#first').val()
 			+ '&second=http://' + $('#second').val() + '&third=http://'
 			+ $('#third').val() + '&fourth=http://' + $('#fourth').val();
 	$('#titlea').html(
