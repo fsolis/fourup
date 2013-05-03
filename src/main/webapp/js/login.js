@@ -12,6 +12,7 @@ $(document).ready(function(){
 			$("#loginForm").addClass("hidden");
 			$("#loggedIn").html(data.html);
 			$("#loggedIn").removeClass("hidden");
+			$("#register").addClass("hidden");
 			//console.log(tester.getResponseHeader('test'));
 		});
 		return false;
