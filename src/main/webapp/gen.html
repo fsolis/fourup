@@ -9,9 +9,9 @@
 				+ $('#fourth').val();
 			get_short_url(linka, login, api_key, function(short_url) {
 			console.log(short_url);
-			$('#genText')
+			$('#titlea')
 				.html(
-						'<a href="' + short_url + '" target="_parent">Here is your fourup.</a>');
+						'<a href="' + short_url + '" target="_new">Here is your fourup.</a>');
 			});
 		}
 		</script>
@@ -49,18 +49,18 @@
 	<body>
 		<div class="wrapper">
 			<div class="row">
-				<h3 id="genText">Make a New FourUp</h3>
+				<h1 id="titlea">Enter four URLs</h1>
 				No need to include "http://", we'll add that for you. 
 				<br />
 				Unfortunately, some sites such as Google and Facebook will not work with fourup.
-				<br/><br/>
+				<br/>
 				<form id="searchForm">
 					<input id="first" size="40" type="text" placeholder="" /><br /> <input
 						id="second" size="40" type="text" placeholder="" /><br /> <input
 						id="third" size="40" type="text" placeholder="" /><br /> <input
 						id="fourth" size="40" type="text" placeholder="" /><br /> <input
 						onclick="create('http://' + document.location.hostname)"
-						value="Make a link" type="submit" /><br />
+						value="Make a link" type="button" /><br />
 				</form>
 			</div>
 		</div>
