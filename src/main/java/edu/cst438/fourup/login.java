@@ -56,7 +56,7 @@ public class login extends HttpServlet
 		        {
 		        	//set session to logged in
 		        	AccountObject user = new AccountObject(email, testPassword);
-		        	HttpSession session = request.getSession();
+		        	HttpSession session = request.getSession(true);
 					session.setAttribute("currentUser", email);
 					session.setAttribute("currentPw", password);
 					Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
