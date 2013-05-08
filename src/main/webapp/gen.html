@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>fourup.com</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
 		<script>
 			var create = function() {
 			linka = 'http://' + document.location.hostname + '?first=http://'
@@ -15,17 +21,12 @@
 			});
 		}
 		</script>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>fourup.com</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
 		<script type="text/javascript" src="gen_files/ga.js" async="" type="text/javascript"></script>
 		<script type="text/javascript" src="gen_files/jquery.js"></script>
 		<script type="text/javascript" src="gen_files/modernizr-2.js"></script>
 		<script type="text/javascript" src="js/shortUrl.js"></script>
 		<script type="text/javascript" src="js/fourup.js"></script>
+		<script type="text/javascript" src="js/search.js"></script>
 		<script src="gen_files/main.js"></script>
 		<style type="text/css">
 		img
@@ -55,12 +56,11 @@
 				Unfortunately, some sites such as Google and Facebook will not work with fourup.
 				<br/>
 				<form id="searchForm">
-					<input id="first" name="first" size="40" type="text" placeholder="" /><br /> <input
-						id="second" name="second" size="40" type="text" placeholder="" /><br /> <input
-						id="third" name="third" size="40" type="text" placeholder="" /><br /> <input
-						id="fourth" name="fourth" size="40" type="text" placeholder="" /><br /> <input
-						onclick="create('http://' + document.location.hostname)"
-						value="Make a link" type="button" /><br />
+					<input id="first" name="first" size="40" type="text" placeholder="" /><br /> 
+					<input id="second" name="second" size="40" type="text" placeholder="" /><br /> 
+					<input id="third" name="third" size="40" type="text" placeholder="" /><br /> 
+					<input id="fourth" name="fourth" size="40" type="text" placeholder="" /><br /> 
+					<input id = "serchFormSubmit" value="Make a link" type="submit" /><br/>
 				</form>
 			</div>
 		</div>

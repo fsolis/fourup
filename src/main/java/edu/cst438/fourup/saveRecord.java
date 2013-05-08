@@ -5,18 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.google.gson.Gson;
 import com.mongodb.*;
 
-public class saveRecord
+import java.io.PrintWriter;
+import javax.servlet.http.*;
+import java.util.*;
+
+import java.net.URI;
+import java.net.UnknownHostException;
+
+import java.util.Set;
+
+public class saveRecord extends HttpServlet
 {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		Map<String, String> myResponse = new HashMap<String, String>();
 		if (!request.getSession(false).equals(null))//if session exists save record
 		{
 			//get current session info
@@ -30,23 +35,46 @@ public class saveRecord
 			String fourth = request.getParameter("fourth");
 
 			//connect to db
-			MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-			DB db = mongoURI.connectDB(); //instance of databse
-			db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
+			// MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+			// DB db = mongoURI.connectDB(); //instance of databse
+			// db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
+			// DBCollection accounts = db.getCollection("accounts");
+
+			//connect to local db
+			Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+			DB db = mongo.getDB("fourup"); //gets fourup database
 			DBCollection accounts = db.getCollection("accounts");
 
 			//access record
-			BasicDBObject search = new BasicDBObject(); //creates a basic object named query
-			search.put("email", user);
-			DBCursor cursor = accounts.find(search);
-			DBObject query = cursor.next();
-			BasicDBObject basicQuery = (BasicDBObject)query;
-			String history = (String)query.get("searchHistory");
+			// BasicDBObject search = new BasicDBObject(); //creates a basic object named query
+			// search.put("email", user);
+			// DBCursor cursor = accounts.find(search);
+			// DBObject query = cursor.next();
+			// BasicDBObject basicQuery = (BasicDBObject)query;
+			// String history = (String)query.get("searchHistory");
 			
-			//add data
-			history += first + "\r\n" + second + "\r\n" + third + "\r\n" + fourth + "\r\n";
-			basicQuery.append("searchHistory", history);
-			accounts.update(search, basicQuery);
+			BasicDBObject docToInsert = new BasicDBObject("firstLink", first);
+			docToInsert.put("secondLink", second);
+			docToInsert.put("thirdLink", third);
+			docToInsert.put("fourthLink", fourth);
+
+			BasicDBObject updateQuery = new BasicDBObject("email", user);
+
+			BasicDBObject updateCommand = new BasicDBObject("$push", new BasicDBObject("savedLinks", docToInsert));
+			accounts.update(updateQuery,updateCommand);
+			response.setContentType("application/json");
+			response.setStatus(HttpServletResponse.SC_OK);
+			myResponse.put("updated", docToInsert.toString());
+			
+			
+		} else {
+			myResponse.put("html", "<html></html>");
+			response.setContentType("application/json");
+			response.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
 		}
+
+		String strResponse = new Gson().toJson(myResponse);
+		response.getWriter().write(strResponse);
+		response.getWriter().close();
 	}
 }

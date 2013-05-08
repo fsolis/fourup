@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$("#registration").submit(function(e){
 
 		e.preventDefault();
-		alert("register called");
 		
 		var userinfo = $("#registration").serialize();
 		var tester;

@@ -10,6 +10,26 @@
 <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+var cookieValue = document.cookie;
+
+var cook = cookieValue.split(';')
+
+for (var i = 0; i < cook.length; i++ ){
+	var name = cook[i].split('=')[0]
+	var value = cook[i].split('=')[1]
+	console.log(name);
+	;
+	if(name === " fourupCookie"){
+			$("#loginForm").addClass("hidden");
+			$("#loggedIn").html("<span><a href=''>" +  value + "</a></span>");
+			$("#loggedIn").removeClass("hidden");
+			$("#register").addClass("hidden");
+	}
+}
+});
+</script>	
 <script type="text/javascript"
 	src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="gen_files/ga.js" async=""
@@ -22,6 +42,7 @@
 <script type="text/javascript" src="gen_files/main.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 <script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
@@ -60,9 +81,8 @@
 					<input id="first" name="first" size="40" type="text" placeholder="" /><br /> <input
 						id="second" name="second" size="40" type="text" placeholder="" /><br /> <input
 						id="third" name="third" size="40" type="text" placeholder="" /><br /> <input
-						id="fourth" name="fourth" size="40" type="text" placeholder="" /><br /> <input
-						onclick="create('http://' + document.location.hostname)"
-						value="Make a link" type="button" /><br />
+						id="fourth" name="fourth" size="40" type="text" placeholder="" /><br /> 
+						<input id = "serchFormSubmit" onclick="create('http://' + document.location.hostname)" value="Make a link" type="submit" /><br />
 				</form>
 			</div>
 		</div>
