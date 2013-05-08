@@ -14,7 +14,7 @@ function get_short_url(long_url, login, api_key, func) {
 
 function create(hostname) {
 	if(hostname == null){
-		hostname = "http://fourup-v1-9.herokuapp.com";
+		hostname = "http://fourup-v2.herokuapp.com";
 	}
 	linka = hostname + '?first=http://' + $('#first').val()
 			+ '&second=http://' + $('#second').val() + '&third=http://'

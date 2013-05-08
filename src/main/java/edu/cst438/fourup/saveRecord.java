@@ -16,7 +16,24 @@ import java.net.URI;
 import java.net.UnknownHostException;
 
 import java.util.Set;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import java.util.*;
+
+import com.google.gson.Gson;
+import java.net.URI;
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
+import com.mongodb.MongoURI;
+import com.mongodb.DB;
+import com.mongodb.MongoException;
 public class saveRecord extends HttpServlet
 {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -35,15 +52,15 @@ public class saveRecord extends HttpServlet
 			String fourth = request.getParameter("fourth");
 
 			//connect to db
-			// MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-			// DB db = mongoURI.connectDB(); //instance of databse
-			// db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
-			// DBCollection accounts = db.getCollection("accounts");
+			 MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+			 DB db = mongoURI.connectDB(); //instance of databse
+			 db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
+			 DBCollection accounts = db.getCollection("accounts");
 
 			//connect to local db
-			Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
-			DB db = mongo.getDB("fourup"); //gets fourup database
-			DBCollection accounts = db.getCollection("accounts");
+			//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+			//DB db = mongo.getDB("fourup"); //gets fourup database
+			//DBCollection accounts = db.getCollection("accounts");
 
 			//access record
 			// BasicDBObject search = new BasicDBObject(); //creates a basic object named query

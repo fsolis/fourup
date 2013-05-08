@@ -37,13 +37,13 @@ public class signup extends HttpServlet
 		{
 			try
 			{
-					//URI mongoURI = new URI(System.getenv("mongodb://fsolis:mongoapp@linus.mongohq.com:10041/app15095098"));
-					//MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-					//DB db = mongoURI.connectDB(); //instance of databse
-					//db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates d
+					
+					MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+					DB db = mongoURI.connectDB(); //instance of databse
+					db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());//authenticates d
 					//Set<string> accounts = db.getCollectionName("accounts");
-					Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
-					DB db = mongo.getDB("fourup"); //gets fourup database
+					//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+					//DB db = mongo.getDB("fourup"); //gets fourup database
 					DBCollection accounts = db.getCollection("accounts"); //creates collection for accounts			
 					BasicDBObject query = new BasicDBObject(); //creates a basic object named query
 					query.put("email", email); //sets email to email
@@ -71,7 +71,7 @@ public class signup extends HttpServlet
 							HttpSession session = request.getSession();
 							session.setAttribute("currentUser", email);
 							//return cookie
-							Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
+							Cookie cookie = new Cookie("fourupCookie",email); //add the login information here
 							response.addCookie(cookie);
 							//redirect to homepage
 							String message = "this is a test";
