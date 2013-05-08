@@ -71,7 +71,7 @@ public class signup extends HttpServlet
 							HttpSession session = request.getSession();
 							session.setAttribute("currentUser", email);
 							//return cookie
-							Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
+							Cookie cookie = new Cookie("fourupCookie", email); //add the login information here
 							response.addCookie(cookie);
 							//redirect to homepage
 							String message = "this is a test";
