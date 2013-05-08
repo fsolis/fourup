@@ -2,7 +2,6 @@ $(document).ready(function(){
 	$("#loginForm").submit(function(e){
 
 		e.preventDefault();
-		alert("login called");
 		
 		var userinfo = $("#loginForm").serialize();
 		var tester;

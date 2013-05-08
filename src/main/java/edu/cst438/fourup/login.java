@@ -32,11 +32,11 @@ public class login extends HttpServlet
 		Map<String, String> myResponse = new HashMap<String, String>();
 		try
 		{
-			MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
-			DB db = mongoURI.connectDB(); //instance of databse
-		        db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
-			//Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
-			//DB db = mongo.getDB("fourup"); //gets fourup database
+			//MongoURI mongoURI = new MongoURI(System.getenv("MONGOHQ_URL"));
+			//DB db = mongoURI.connectDB(); //instance of databse
+		    //    db.authenticate(mongoURI.getUsername(), mongoURI.getPassword());
+			Mongo mongo = new Mongo("localhost", 27017); //creates new instance of mongo
+			DB db = mongo.getDB("fourup"); //gets fourup database
 			DBCollection accounts = db.getCollection("accounts");
 			BasicDBObject query = new BasicDBObject(); //creates a basic object named query
 			query.put("email", email);
@@ -56,10 +56,10 @@ public class login extends HttpServlet
 		        {
 		        	//set session to logged in
 		        	AccountObject user = new AccountObject(email, testPassword);
-		        	HttpSession session = request.getSession();
+		        	HttpSession session = request.getSession(true);
 					session.setAttribute("currentUser", email);
 					session.setAttribute("currentPw", password);
-					Cookie cookie = new Cookie("fourupCookie", user.toString()); //add the login information here
+					Cookie cookie = new Cookie("fourupCookie", email); //add the login information here
 					response.addCookie(cookie);
 					response.setContentType("application/json");
 					response.setStatus(HttpServletResponse.SC_OK);

@@ -10,6 +10,26 @@
 <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+var cookieValue = document.cookie;
+
+var cook = cookieValue.split(';')
+
+for (var i = 0; i < cook.length; i++ ){
+	var name = cook[i].split('=')[0]
+	var value = cook[i].split('=')[1]
+	console.log(name);
+	;
+	if(name === " fourupCookie"){
+			$("#loginForm").addClass("hidden");
+			$("#loggedIn").html("<span><a href=''>" +  value + "</a></span>");
+			$("#loggedIn").removeClass("hidden");
+			$("#register").addClass("hidden");
+	}
+}
+});
+</script>	
 <script type="text/javascript"
 	src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script type="text/javascript" src="gen_files/ga.js" async=""
@@ -22,18 +42,20 @@
 <script type="text/javascript" src="gen_files/main.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 <script>
 	var create = function() {
 		linka = 'http://' + document.location.hostname + '?first=http://'
 				+ $('#first').val() + '&second=http://' + $('#second').val()
 				+ '&third=http://' + $('#third').val() + '&fourth=http://'
 				+ $('#fourth').val();
-		$('#titlea')
-				.html(
-						'<a href="' + linka + '" target="_new">Here is your fourup.</a>');
+		
 		get_short_url(linka, login, api_key, function(short_url) {
 			console.log(short_url);
-			$('#result').val(short_url);
+			$('#titlea')
+				.html(
+						'<a href="' + short_url + '" target="_new">Here is your fourup.</a>');
+			
 		});
 	}
 
@@ -55,14 +77,12 @@
 			<h3 id="genText">Make a New FourUp</h3>
 			<div id="genMenu">
 				<h1 id="titlea">Enter four URLs</h1>
-				<form>
-					<input id="first" size="40" type="text" placeholder="" /><br /> <input
-						id="second" size="40" type="text" placeholder="" /><br /> <input
-						id="third" size="40" type="text" placeholder="" /><br /> <input
-						id="fourth" size="40" type="text" placeholder="" /><br /> <input
-						onclick="create('http://' + document.location.hostname)"
-						value="Make a link" type="button" /><br /> <input id="result"
-						size="40" type="text" />
+				<form id="searchForm">
+					<input id="first" name="first" size="40" type="text" placeholder="" /><br /> <input
+						id="second" name="second" size="40" type="text" placeholder="" /><br /> <input
+						id="third" name="third" size="40" type="text" placeholder="" /><br /> <input
+						id="fourth" name="fourth" size="40" type="text" placeholder="" /><br /> 
+						<input id = "serchFormSubmit" onclick="create('http://' + document.location.hostname)" value="Make a link" type="submit" /><br />
 				</form>
 			</div>
 		</div>
